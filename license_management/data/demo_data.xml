@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+        <!-- Demo Products -->
+        <record id="product_accounting_basic" model="product.template">
+            <field name="name">Accounting Basic</field>
+            <field name="reference_code">ACC-BASIC</field>
+            <field name="is_license_product">True</field>
+            <field name="license_type">subscription</field>
+            <field name="license_program_id" ref="license_program_accounting"/>
+            <field name="type">service</field>
+            <field name="list_price">1000.00</field>
+            <field name="allowed_term_ids" eval="[(6, 0, [ref('license_term_1_month_trial'), ref('license_term_6_months'), ref('license_term_1_year')])]"/>
+        </record>
+
+        <record id="product_accounting_premium" model="product.template">
+            <field name="name">Accounting Premium</field>
+            <field name="reference_code">ACC-PREM</field>
+            <field name="is_license_product">True</field>
+            <field name="license_type">subscription</field>
+            <field name="license_program_id" ref="license_program_accounting"/>
+            <field name="type">service</field>
+            <field name="list_price">2000.00</field>
+            <field name="allowed_term_ids" eval="[(6, 0, [ref('license_term_6_months'), ref('license_term_1_year'), ref('license_term_3_years')])]"/>
+        </record>
+
+        <record id="product_crm_standard" model="product.template">
+            <field name="name">CRM Standard</field>
+            <field name="reference_code">CRM-STD</field>
+            <field name="is_license_product">True</field>
+            <field name="license_type">subscription</field>
+            <field name="license_program_id" ref="license_program_crm"/>
+            <field name="type">service</field>
+            <field name="list_price">1500.00</field>
+            <field name="allowed_term_ids" eval="[(6, 0, [ref('license_term_1_month_trial'), ref('license_term_1_year'), ref('license_term_2_years')])]"/>
+        </record>
+
+        <!-- Demo Dealers -->
+        <record id="partner_dealer_istanbul" model="res.partner">
+            <field name="name">İstanbul Yazılım Bayii</field>
+            <field name="is_dealer">True</field>
+            <field name="dealer_since" eval="(DateTime.today() - timedelta(days=365))"/>
+            <field name="signboard_name">İstanbul Yazılım</field>
+            <field name="tax_number">1234567890</field>
+            <field name="dealer_pricelist_id" ref="pricelist_dealer_standard"/>
+            <field name="dealer_discount_rate">5.0</field>
+            <field name="city">İstanbul</field>
+            <field name="country_id" ref="base.tr"/>
+        </record>
+
+        <record id="partner_dealer_ankara" model="res.partner">
+            <field name="name">Ankara Teknoloji Bayii</field>
+            <field name="is_dealer">True</field>
+            <field name="dealer_since" eval="(DateTime.today() - timedelta(days=730))"/>
+            <field name="signboard_name">Ankara Teknoloji</field>
+            <field name="tax_number">0987654321</field>
+            <field name="dealer_pricelist_id" ref="pricelist_dealer_premium"/>
+            <field name="dealer_discount_rate">10.0</field>
+            <field name="city">Ankara</field>
+            <field name="country_id" ref="base.tr"/>
+        </record>
+
+        <!-- Demo Customers -->
+        <record id="partner_customer_abc_ltd" model="res.partner">
+            <field name="name">ABC Limited Şirketi</field>
+            <field name="is_company">True</field>
+            <field name="dealer_id" ref="partner_dealer_istanbul"/>
+            <field name="property_product_pricelist" ref="pricelist_customer_retail"/>
+            <field name="city">İstanbul</field>
+            <field name="country_id" ref="base.tr"/>
+        </record>
+
+        <record id="partner_customer_xyz_corp" model="res.partner">
+            <field name="name">XYZ Korporasyon</field>
+            <field name="is_company">True</field>
+            <field name="dealer_id" ref="partner_dealer_ankara"/>
+            <field name="property_product_pricelist" ref="pricelist_customer_retail"/>
+            <field name="city">Ankara</field>
+            <field name="country_id" ref="base.tr"/>
+        </record>
+
+</odoo>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Helpdesk Ticket Form Görünümünü Genişlet -->
+    <record id="view_helpdesk_ticket_form_license" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.form.license</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk_mgmt.ticket_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Dealer ve License alanlarını ekle -->
+            <xpath expr="//field[@name='channel_id']" position="after">
+                <field name="dealer_id"/>
+                <field name="license_id"
+                       context="{'default_partner_id': partner_id}"
+                       required="not product_id"
+                />
+                <field name="has_maintenance_agreement" invisible="1"/>
+                <field name="has_free_support_active" invisible="1"/>
+            </xpath>
+
+            <!-- Var olan product_id alanının özelliklerini güncelle -->
+            <xpath expr="//field[@name='product_id']" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+                <attribute name="context">{'show_product_code_in_name': True}</attribute>
+            </xpath>
+
+            <!-- Partner domain güncellemesi -->
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="domain">[('license_count', '>=', 1)]</attribute>
+            </xpath>
+
+            <xpath expr="//div[hasclass('oe_title')]" position="after">
+            <!-- Yeşil Uyarı: Bakım Anlaşması (ÖNCELİKLİ) -->
+            <div class="alert alert-success text-center" role="alert" invisible="not has_maintenance_agreement">
+                <i class="fa fa-shield"/> <strong>Bu ticket, geçerli bir Bakım Anlaşması kapsamındadır.</strong>
+            </div>
+            <!-- Turuncu Uyarı: Ücretsiz Destek (Sadece bakım anlaşması yoksa gösterilir) -->
+            <div class="alert alert-warning text-center" role="alert" invisible="has_maintenance_agreement or not has_free_support_active">
+                <i class="fa fa-shield"/> <strong>Bu ticket, Ücretsiz Destek kapsamındadır.</strong>
+            </div>
+        </xpath>
+
+        </field>
+    </record>
+
+    <!-- Helpdesk Ticket Tree (Liste) Görünümünü Genişlet -->
+    <record id="view_helpdesk_ticket_tree_license" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.tree.license</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk_mgmt.ticket_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="dealer_id" optional="show"/>
+                <field name="license_id" optional="show"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Enhanced Helpdesk Kanban View - OCA'nın üzerine gelişmiş versiyon -->
+    <record id="view_helpdesk_ticket_kanban_enhanced" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.kanban.enhanced</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="priority">10</field> <!-- OCA'nın üzerine çıkar -->
+        <field name="arch" type="xml">
+        <kanban class="o_kanban_small_column" default_group_by="stage_id" quick_create="false">
+                <field name="id"/>
+                <field name="number"/>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="user_id"/>
+                <field name="priority"/>
+                <field name="create_date"/>
+                <field name="activity_ids"/>
+                <field name="activity_state"/>
+                <field name="color"/>
+                <field name="stage_id"/>
+                <field name="category_id"/>
+                <field name="tag_ids"/>
+
+                <!-- License fields -->
+                <field name="dealer_id"/>
+                <field name="license_id"/>
+                <field name="product_id"/>
+                <field name="has_maintenance_agreement"/>
+                <field name="has_free_support_active"/>
+                <progressbar field="activity_state" colors="{&quot;planned&quot;: &quot;success&quot;, &quot;today&quot;: &quot;warning&quot;, &quot;overdue&quot;: &quot;danger&quot;}"/>
+
+                <templates>
+                    <t t-name="menu" class="flex-row">
+                        <a role="menuitem" type="open" class="dropdown-item">
+                            <i class="fa fa-edit"/> Edit
+                        </a>
+                        <a role="menuitem" type="object" name="assign_to_me" class="dropdown-item" t-if="!record.user_id.raw_value">
+                            <i class="fa fa-user"/> Assign to Me
+                        </a>
+                        <div class="dropdown-divider"/>
+                        <a role="menuitem" class="dropdown-item" t-att-href="'/web#id=' + record.partner_id.raw_value + '&amp;view_type=form&amp;model=res.partner'" t-if="record.partner_id.raw_value">
+                            <i class="fa fa-user"/> Customer
+                        </a>
+                        <a role="menuitem" class="dropdown-item" t-att-href="'/web#id=' + record.license_id.raw_value + '&amp;view_type=form&amp;model=license.subscription'" t-if="record.license_id.raw_value">
+                            <i class="fa fa-key"/> License
+                        </a>
+                        <field name="color" widget="kanban_color_picker"/>
+                    </t>
+
+                    <t t-name="card" class="my-2">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="d-flex align-items-center">
+                                <span class="text-muted">
+                                    <field name="number"/>
+                                </span>
+                                <field name="priority" widget="priority" class="ms-2"/>
+                            </div>
+                            <!-- Indicators -->
+                            <div class="d-flex gap-1">
+                                <!-- 1. Bakım anlaşması varsa YEŞİL kalkan göster -->
+                                <t t-if="record.has_maintenance_agreement.raw_value">
+                                    <span class="badge bg-success" title="Geçerli Bakım Anlaşması Mevcut">
+                                        <i class="fa fa-shield fa-sm"/>
+                                    </span>
+                                </t>
+                                <!-- 2. Bakım anlaşması yok AMA ücretsiz destek varsa TURUNCU kalkan göster -->
+                                <t t-elif="record.has_free_support_active.raw_value">
+                                    <span class="badge bg-warning" title="Ücretsiz Destek Kapsamında">
+                                        <i class="fa fa-shield fa-sm"/>
+                                    </span>
+                                </t>
+                                <t t-if="record.license_id.value">
+                                    <span class="badge bg-info" title="Has License">
+                                        <i class="fa fa-key fa-sm"/>
+                                    </span>
+                                </t>
+                                <t t-if="record.product_id.value">
+                                    <span class="badge bg-secondary" title="Product">
+                                        <i class="fa fa-cube fa-sm"/>
+                                    </span>
+                                </t>
+                            </div>
+                        </div>
+                        <div class="mb-1">
+                            <small><field name="create_date" widget="date"/></small>
+                        </div>
+                        <!-- HEADER - Ticket Number & Priority -->
+                            <div class="d-flex align-items-center mb-3">
+                                <h6 class="fw-bold text-dark mb-0">
+                                    <field name="partner_id"/>
+                                </h6>
+                            </div>
+                        <div class="mb-3">
+                            <small class="mb-1 text-muted" style="line-height: 1.2;">
+                                <field name="name"/>
+                            </small>
+                        </div>
+                                                    <!-- TITLE -->
+
+                        <!-- CUSTOMER INFO -->
+                        <div class="mb-3">
+
+                            <!-- Dealer info (compact) -->
+                            <t t-if="record.dealer_id.value">
+                                <div class="d-flex align-items-center mb-1">
+                                    <i class="fa fa-handshake-o text-muted me-2" style="width: 16px;"/>
+                                    <small class="text-muted">
+                                        <field name="dealer_id"/>
+                                    </small>
+                                </div>
+                            </t>
+
+                            <!-- License (compact) -->
+                            <t t-if="record.license_id.value">
+                                <div class="d-flex align-items-center mb-1">
+                                    <i class="fa fa-key text-muted me-2" style="width: 16px;"/>
+                                    <small class="text-muted">
+                                        <field name="license_id"/>
+                                    </small>
+                                </div>
+                            </t>
+                        </div>
+
+                        <!-- CATEGORY & TAGS (if any) -->
+
+                        <t t-if="record.tag_ids.raw_value and record.tag_ids.raw_value.length &gt; 0">
+                            <div class="mb-2">
+                                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                            </div>
+                        </t>
+
+
+
+                        <!-- FOOTER -->
+                        <div class="d-flex justify-content-between align-items-center pt-1 border-top">
+                            <!-- Activity -->
+                            <div class="d-flex">
+                                <field name="activity_ids" widget="kanban_activity"/>
+                                <t t-if="record.category_id.value">
+                                        <span class="badge bg-light text-dark ms-2">
+                                            <field name="category_id"/>
+                                        </span>
+                                </t>
+                            </div>
+
+                            <!-- Assigned User -->
+                            <div class="d-flex align-items-center">
+                                <t t-if="record.user_id.value">
+                                    <field name="user_id" widget="many2one_avatar_user"/>
+                                </t>
+                                <t t-else="">
+                                    <span class="badge bg-warning text-dark">
+                                        <i class="fa fa-user-times fa-sm"/> Unassigned
+                                    </span>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Ana helpdesk action'ını güncelle - kanban'ı ilk sıraya al -->
+    <record id="helpdesk_mgmt.helpdesk_ticket_action" model="ir.actions.act_window">
+        <field name="view_mode">kanban,list,form,pivot,graph</field>
+    </record>
+
+    <!-- My Tickets action'ını da güncelle -->
+    <record id="helpdesk_mgmt.helpdesk_my_tickets_action" model="ir.actions.act_window">
+        <field name="view_mode">kanban,list,form,pivot</field>
+    </record>
+
+    <!-- Helpdesk Ticket Arama Görünümünü Genişlet -->
+    <record id="view_helpdesk_ticket_search_license" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.search.license</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk_mgmt.helpdesk_ticket_view_search"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="dealer_id"/>
+                <field name="license_id"/>
+            </field>
+            <xpath expr="//filter[@name='group_tag']" position="after">
+                <filter string="License" name="group_license"
+                        context="{'group_by': 'license_id'}"/>
+                <filter string="Dealer" name="group_dealer"
+                        context="{'group_by': 'dealer_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

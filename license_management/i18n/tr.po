@@ -1,0 +1,1250 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* license_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-07 09:55+0000\n"
+"PO-Revision-Date: 2025-08-07 12:57+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.5\n"
+
+#. module: license_management
+#. odoo-python
+#: code:addons/license_management/models/license_subscription.py:0
+msgid "%s (Copy)"
+msgstr "%s (Kopya)"
+
+#. module: license_management
+#: model:license.term,name:license_management.license_term_1_month
+msgid "1 Month"
+msgstr "1 Ay"
+
+#. module: license_management
+#: model:license.term,name:license_management.license_term_1_year
+msgid "1 Year"
+msgstr "1 Yıl"
+
+#. module: license_management
+#: model:license.term,name:license_management.license_term_15_days_trial
+msgid "15-Day Trial"
+msgstr "15 Günlük Deneme"
+
+#. module: license_management
+#: model:license.term,name:license_management.license_term_2_years
+msgid "2 Years"
+msgstr "2 Yıl"
+
+#. module: license_management
+#: model:license.term,name:license_management.license_term_3_months
+msgid "3 Months"
+msgstr "3 Ay"
+
+#. module: license_management
+#: model:license.term,name:license_management.license_term_3_years
+msgid "3 Years"
+msgstr "3 Yıl"
+
+#. module: license_management
+#: model:license.term,name:license_management.license_term_6_months
+msgid "6 Months"
+msgstr "6 Ay"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_dealer_partner_kanban
+msgid "<i class=\"fa fa-check-circle\" title=\"View Active Licenses\"/>"
+msgstr "<i class=\"fa fa-check-circle\" title=\"Aktif Lisansları Görüntüle\"/>"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_dealer_partner_kanban
+msgid "<i class=\"fa fa-key\" title=\"View All Licenses\"/>"
+msgstr "<i class=\"fa fa-key\" title=\"Tüm Lisansları Görüntüle\"/>"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_dealer_partner_kanban
+msgid "<i class=\"fa fa-map-marker\" aria-label=\"Address\"/>"
+msgstr "<i class=\"fa fa-map-marker\" aria-label=\"Adres\"/>"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_dealer_partner_kanban
+msgid "<i class=\"fa fa-users\" title=\"View Customers\"/>"
+msgstr "<i class=\"fa fa-users\" title=\"Müşterileri Görüntüle\"/>"
+
+#. module: license_management
+#: model:mail.template,body_html:license_management.mail_template_license_expiring
+msgid ""
+"<p>Dear {{ object.partner_id.name }},</p>\n"
+"<p>Your license <strong>{{ object.license_no }}</strong> for {{ object."
+"product_id.name }}\n"
+"will expire on <strong>{{ object.end_date }}</strong> ({{ object."
+"days_to_expire }} days remaining).</p>\n"
+"<p>Please contact us to renew your license.</p>\n"
+"<p>Best regards,<br/>{{ user.company_id.name }}</p>\n"
+"            "
+msgstr ""
+"<p>Sayın {{ object.customer_id.name }},</p>\n"
+"<p>Kullanmakta olduğunuz <strong>{{ object.product_id.name }}</strong> "
+"ürününe ait <strong>{{ object.license_no }}</strong> numaralı lisansınızın "
+"geçerlilik süresi, <strong>{{ object.end_date }}</strong> tarihinde "
+"dolacaktır. (Kalan Süre: {{ object.days_to_expire }} gün)</p>\n"
+"<p>Hizmetlerinizde herhangi bir kesinti yaşanmaması için lisansınızı "
+"yenilemek üzere lütfen bayiniz ile iletişime geçmenizi rica ederiz.</p>\n"
+"<p>Saygılarımızla,<br/>{{ user.company_id.name }}</p>"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_partner_form_license
+msgid "<span class=\"o_stat_text\">Active Licenses</span>"
+msgstr "<span class=\"o_stat_text\">Aktif Lisanslar</span>"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_partner_form_license
+msgid "<span class=\"o_stat_text\">All Licenses</span>"
+msgstr "<span class=\"o_stat_text\">Tüm Lisanslar</span>"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_partner_form_license
+msgid "<span class=\"o_stat_text\">Customers</span>"
+msgstr "<span class=\"o_stat_text\">Müşteriler</span>"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_partner_form_license
+msgid "<span class=\"o_stat_text\">Expired Licenses</span>"
+msgstr "<span class=\"o_stat_text\">Süresi Dolmuş Lisanslar</span>"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_partner_form_license
+msgid "<span class=\"o_stat_text\">Licenses</span>"
+msgstr "<span class=\"o_stat_text\">Lisanslar</span>"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_history__action
+msgid "Action"
+msgstr "Eylem"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__message_needaction
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__message_needaction
+msgid "Action Needed"
+msgstr "Eylem Gerekli"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_form
+msgid "Activate"
+msgstr "Aktifleştir"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__license_history__action__activated
+msgid "Activated"
+msgstr "Aktifleştirildi"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__active
+#: model:ir.model.fields,field_description:license_management.field_license_term__active
+#: model:ir.model.fields.selection,name:license_management.selection__license_subscription__state__active
+#: model_terms:ir.ui.view,arch_db:license_management.view_dealer_partner_kanban
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_program_search
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_search
+msgid "Active"
+msgstr "Aktif"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__active_license_count
+#: model:ir.model.fields,field_description:license_management.field_res_partner__active_license_count
+#: model:ir.model.fields,field_description:license_management.field_res_users__active_license_count
+msgid "Active Licenses"
+msgstr "Aktif Lisanslar"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__activity_ids
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__activity_ids
+msgid "Activities"
+msgstr "Aktiviteler"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__activity_exception_decoration
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Aktivite İstisna Dekorasyonu"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__activity_state
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__activity_state
+msgid "Activity State"
+msgstr "Aktivite Durumu"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__activity_type_icon
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Aktivite Türü İkonu"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_program_form
+msgid "Add a description..."
+msgstr "Bir açıklama ekleyin..."
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_product_product__allowed_term_ids
+#: model:ir.model.fields,field_description:license_management.field_product_template__allowed_term_ids
+msgid "Allowed License Terms"
+msgstr "İzin Verilen Lisans Süreleri"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_program_form
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_program_search
+msgid "Archived"
+msgstr "Arşivlenmiş"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__message_attachment_count
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__message_attachment_count
+msgid "Attachment Count"
+msgstr "Ek Sayısı"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__auto_renew
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_search
+msgid "Auto Renew"
+msgstr "Otomatik Yenile"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__license_history__action__auto_renewed
+msgid "Auto Renewed"
+msgstr "Otomatik Yenilendi"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_renewal_wizard
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_form
+msgid "Cancel"
+msgstr "İptal"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__license_history__action__cancelled
+#: model:ir.model.fields.selection,name:license_management.selection__license_subscription__state__cancelled
+msgid "Cancelled"
+msgstr "İptal Edildi"
+
+#. module: license_management
+#: model:ir.actions.server,name:license_management.ir_cron_check_expiring_licenses_ir_actions_server
+msgid "Check Expiring Licenses"
+msgstr "Süresi Dolan Lisansları Kontrol Et"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_dealer_partner_kanban
+msgid "Code:"
+msgstr "Kod:"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__company_id
+msgid "Company"
+msgstr "Şirket"
+
+#. module: license_management
+#: model:ir.ui.menu,name:license_management.menu_license_configuration
+msgid "Configuration"
+msgstr "Yapılandırma"
+
+#. module: license_management
+#: model:ir.model,name:license_management.model_res_partner
+msgid "Contact"
+msgstr "Kontak"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__contact_person_id
+msgid "Contact Person"
+msgstr "Yetkili Kişi"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__contact_role
+#: model:ir.model.fields,field_description:license_management.field_res_users__contact_role
+msgid "Contact Role"
+msgstr "Yetkili Rolü"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_form
+msgid "Create Subscription"
+msgstr "Abonelik Oluştur"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_form
+msgid ""
+"Create a new license for the same customer, but with different product/term."
+msgstr "Aynı müşteri için yeni ürün/süre ile lisans oluştur."
+
+#. module: license_management
+#: model_terms:ir.actions.act_window,help:license_management.action_license_subscription
+msgid "Create your first license!"
+msgstr "İlk lisansınızı oluşturun!"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__license_history__action__created
+msgid "Created"
+msgstr "Oluşturuldu"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_history__create_uid
+#: model:ir.model.fields,field_description:license_management.field_license_program__create_uid
+#: model:ir.model.fields,field_description:license_management.field_license_renewal_wizard__create_uid
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__create_uid
+#: model:ir.model.fields,field_description:license_management.field_license_term__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_history__create_date
+#: model:ir.model.fields,field_description:license_management.field_license_program__create_date
+#: model:ir.model.fields,field_description:license_management.field_license_renewal_wizard__create_date
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__create_date
+#: model:ir.model.fields,field_description:license_management.field_license_term__create_date
+msgid "Created on"
+msgstr "Oluşturulma Tarihi"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__currency_id
+msgid "Currency"
+msgstr "Para Birimi"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_renewal_wizard__customer_id
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_search
+msgid "Customer"
+msgstr "Müşteri"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__customer_id
+msgid "Customer (Company/Person)"
+msgstr "Müşteri (Firma/Kişi)"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__customer_count
+#: model:ir.model.fields,field_description:license_management.field_res_users__customer_count
+msgid "Customer Count"
+msgstr "Müşteri Sayısı"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__customer_license_ids
+#: model:ir.model.fields,field_description:license_management.field_res_users__customer_license_ids
+msgid "Customer Licenses"
+msgstr "Müşteri Lisansları"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__customer_since
+#: model:ir.model.fields,field_description:license_management.field_res_users__customer_since
+msgid "Customer Since"
+msgstr "Müşteri Olma Tarihi"
+
+#. module: license_management
+#: model:ir.actions.act_window,name:license_management.action_customer_partners
+#: model:ir.model.fields,field_description:license_management.field_res_partner__customer_ids
+#: model:ir.model.fields,field_description:license_management.field_res_users__customer_ids
+#: model:ir.ui.menu,name:license_management.menu_customer_list
+#: model_terms:ir.ui.view,arch_db:license_management.view_dealer_partner_kanban
+#: model_terms:ir.ui.view,arch_db:license_management.view_partner_search_license
+msgid "Customers"
+msgstr "Müşteriler"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_history__date
+msgid "Date"
+msgstr "Tarih"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__license_term__unit__days
+msgid "Days"
+msgstr "Gün"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__days_to_expire
+msgid "Days to Expire"
+msgstr "Kalan Gün"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_renewal_wizard__dealer_id
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__dealer_id
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_search
+msgid "Dealer"
+msgstr "Bayi"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__dealer_code
+#: model:ir.model.fields,field_description:license_management.field_res_users__dealer_code
+msgid "Dealer Code"
+msgstr "Bayi Kodu"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__dealer_discount_rate
+#: model:ir.model.fields,field_description:license_management.field_res_users__dealer_discount_rate
+msgid "Dealer Discount Rate (%)"
+msgstr "Bayi İskonto Oranı (%)"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_partner_form_license
+msgid "Dealer Information"
+msgstr "Bayi Bilgileri"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__dealer_license_ids
+#: model:ir.model.fields,field_description:license_management.field_res_users__dealer_license_ids
+msgid "Dealer Licenses"
+msgstr "Bayi Lisansları"
+
+#. module: license_management
+#: model:ir.ui.menu,name:license_management.menu_dealer_list
+msgid "Dealer List"
+msgstr "Bayi Listesi"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__dealer_pricelist_id
+#: model:ir.model.fields,field_description:license_management.field_res_users__dealer_pricelist_id
+msgid "Dealer Pricelist"
+msgstr "Bayi Fiyat Listesi"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__dealer_since
+#: model:ir.model.fields,field_description:license_management.field_res_users__dealer_since
+msgid "Dealer Since"
+msgstr "Bayi Olma Tarihi"
+
+#. module: license_management
+#: model:ir.actions.act_window,name:license_management.action_dealer_partners
+#: model_terms:ir.ui.view,arch_db:license_management.view_partner_search_license
+msgid "Dealers"
+msgstr "Bayiler"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__dealer_id
+#: model:ir.model.fields,field_description:license_management.field_res_users__dealer_id
+msgid "Default Dealer"
+msgstr "Varsayılan Bayi"
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_res_partner__main_contact_id
+#: model:ir.model.fields,help:license_management.field_res_users__main_contact_id
+msgid "Default contact person for this company."
+msgstr "Bu şirket için varsayılan yetkili kişi."
+
+#. module: license_management
+#. odoo-python
+#: code:addons/license_management/models/license_subscription.py:0
+msgid "Default dealer set to %s via License %s."
+msgstr "Varsayılan bayi, %s Lisansı aracılığıyla %s olarak ayarlandı."
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_res_partner__dealer_discount_rate
+#: model:ir.model.fields,help:license_management.field_res_users__dealer_discount_rate
+msgid "Default discount rate for this dealer"
+msgstr "Bu bayi için varsayılan iskonto oranı"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__description
+#: model:ir.model.fields,field_description:license_management.field_license_term__description
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_program_form
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_term_form
+msgid "Description"
+msgstr "Açıklama"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_history__display_name
+#: model:ir.model.fields,field_description:license_management.field_license_program__display_name
+#: model:ir.model.fields,field_description:license_management.field_license_renewal_wizard__display_name
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__display_name
+#: model:ir.model.fields,field_description:license_management.field_license_term__display_name
+msgid "Display Name"
+msgstr "Görünen Ad"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__district
+#: model:ir.model.fields,field_description:license_management.field_res_users__district
+msgid "District"
+msgstr "İlçe"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__license_subscription__state__draft
+msgid "Draft"
+msgstr "Taslak"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_form
+msgid "Duplicate for New Product"
+msgstr "Yeni Ürün İçin Kopyala"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_term__duration
+msgid "Duration"
+msgstr "Süre"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_renewal_wizard__duration
+msgid "Duration (Days)"
+msgstr "Süre (Gün)"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__end_date
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_search
+msgid "End Date"
+msgstr "Bitiş Tarihi"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__license_history__action__expired
+#: model:ir.model.fields.selection,name:license_management.selection__license_subscription__state__expired
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_form
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_search
+msgid "Expired"
+msgstr "Süresi Dolmuş"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__expired_license_count
+#: model:ir.model.fields,field_description:license_management.field_res_users__expired_license_count
+msgid "Expired Licenses"
+msgstr "Süresi Dolmuş Lisanslar"
+
+#. module: license_management
+#: model:ir.actions.act_window,name:license_management.action_expiring_licenses_report
+#: model:ir.ui.menu,name:license_management.menu_expiring_licenses
+msgid "Expiring Licenses"
+msgstr "Süresi Dolan Lisanslar"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__license_subscription__state__expiring
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_form
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_search
+msgid "Expiring Soon"
+msgstr "Yakında Sona Erecek"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__message_follower_ids
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__message_follower_ids
+msgid "Followers"
+msgstr "Takipçiler"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__message_partner_ids
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Takipçiler (İlgili Taraflar)"
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_license_program__activity_type_icon
+#: model:ir.model.fields,help:license_management.field_license_subscription__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Font awesome ikonu, örn. fa-tasks"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_search
+msgid "Group By"
+msgstr "Grupla"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_partner_search_license
+msgid "Has Active Licenses"
+msgstr "Aktif Lisansı Var"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__has_message
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__has_message
+msgid "Has Message"
+msgstr "Mesaj Var"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__history_ids
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_form
+msgid "History"
+msgstr "Geçmiş"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_history__id
+#: model:ir.model.fields,field_description:license_management.field_license_program__id
+#: model:ir.model.fields,field_description:license_management.field_license_renewal_wizard__id
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__id
+#: model:ir.model.fields,field_description:license_management.field_license_term__id
+msgid "ID"
+msgstr ""
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__activity_exception_icon
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__activity_exception_icon
+msgid "Icon"
+msgstr "İkon"
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_license_program__activity_exception_icon
+#: model:ir.model.fields,help:license_management.field_license_subscription__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Bir istisna aktivitesini belirten ikon."
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_license_program__message_needaction
+#: model:ir.model.fields,help:license_management.field_license_subscription__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "İşaretlenirse, yeni mesajlar sizin ilgilenmenizi gerektirir."
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_license_program__message_has_error
+#: model:ir.model.fields,help:license_management.field_license_program__message_has_sms_error
+#: model:ir.model.fields,help:license_management.field_license_subscription__message_has_error
+#: model:ir.model.fields,help:license_management.field_license_subscription__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "İşaretlenirse, bazı mesajlarda teslimat hatası var demektir."
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_form
+msgid "Integration"
+msgstr "Entegrasyon"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__is_dealer
+#: model:ir.model.fields,field_description:license_management.field_res_users__is_dealer
+msgid "Is Dealer"
+msgstr "Bayi mi"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__message_is_follower
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__message_is_follower
+msgid "Is Follower"
+msgstr "Takipçi mi"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_product_product__is_license_product
+#: model:ir.model.fields,field_description:license_management.field_product_template__is_license_product
+msgid "Is License Product"
+msgstr "Lisans Ürünü mü"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_history__write_uid
+#: model:ir.model.fields,field_description:license_management.field_license_program__write_uid
+#: model:ir.model.fields,field_description:license_management.field_license_renewal_wizard__write_uid
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__write_uid
+#: model:ir.model.fields,field_description:license_management.field_license_term__write_uid
+msgid "Last Updated by"
+msgstr "Son Güncelleyen"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_history__write_date
+#: model:ir.model.fields,field_description:license_management.field_license_program__write_date
+#: model:ir.model.fields,field_description:license_management.field_license_renewal_wizard__write_date
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__write_date
+#: model:ir.model.fields,field_description:license_management.field_license_term__write_date
+msgid "Last Updated on"
+msgstr "Son Güncelleme Tarihi"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_history__license_id
+#: model:ir.model.fields,field_description:license_management.field_license_renewal_wizard__license_id
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_form
+msgid "License"
+msgstr "Lisans"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__amount
+msgid "License Amount"
+msgstr "Lisans Tutarı"
+
+#. module: license_management
+#: model:ir.actions.act_window,name:license_management.action_license_analysis
+#: model:ir.ui.menu,name:license_management.menu_license_analysis
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_graph
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_pivot
+msgid "License Analysis"
+msgstr "Lisans Analizi"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_calendar
+msgid "License Calendar"
+msgstr "Lisans Takvimi"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__license_count
+#: model:ir.model.fields,field_description:license_management.field_res_users__license_count
+msgid "License Count"
+msgstr "Lisans Sayısı"
+
+#. module: license_management
+#: model:mail.template,name:license_management.mail_template_license_expiring
+msgid "License Expiring Notification"
+msgstr "Lisans Sona Erme Bildirimi"
+
+#. module: license_management
+#: model:ir.model,name:license_management.model_license_history
+msgid "License History"
+msgstr "Lisans Geçmişi"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_partner_form_license
+msgid "License Info"
+msgstr "Lisans Bilgisi"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.product_template_form_view_license
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_form
+msgid "License Information"
+msgstr "Lisans Bilgileri"
+
+#. module: license_management
+#: model:ir.module.category,name:license_management.module_category_license_management
+#: model:ir.ui.menu,name:license_management.menu_license_root
+msgid "License Management"
+msgstr "Lisans Yönetimi"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__license_no
+msgid "License No"
+msgstr "Lisans No"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_form
+msgid "License Number"
+msgstr "Lisans Numarası"
+
+#. module: license_management
+#: model:ir.ui.menu,name:license_management.menu_license_products
+#: model_terms:ir.ui.view,arch_db:license_management.product_template_search_view_license
+msgid "License Products"
+msgstr "Lisans Ürünleri"
+
+#. module: license_management
+#: model:ir.model,name:license_management.model_license_program
+#: model:ir.model.fields,field_description:license_management.field_product_product__license_program_id
+#: model:ir.model.fields,field_description:license_management.field_product_template__license_program_id
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_program_form
+msgid "License Program"
+msgstr "Lisans Programı"
+
+#. module: license_management
+#: model:ir.actions.act_window,name:license_management.action_license_program
+#: model:ir.ui.menu,name:license_management.menu_license_program
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_program_list
+msgid "License Programs"
+msgstr "Lisans Programları"
+
+#. module: license_management
+#: model:ir.model,name:license_management.model_license_renewal_wizard
+msgid "License Renewal Wizard"
+msgstr "Lisans Yenileme Sihirbazı"
+
+#. module: license_management
+#: model:ir.actions.act_window,name:license_management.action_license_report
+msgid "License Report"
+msgstr "Lisans Raporu"
+
+#. module: license_management
+#: model:ir.model,name:license_management.model_license_subscription
+msgid "License Subscription"
+msgstr "Lisans Aboneliği"
+
+#. module: license_management
+#: model:ir.actions.act_window,name:license_management.action_license_subscription
+msgid "License Subscriptions"
+msgstr "Lisans Abonelikleri"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_partner_form_license
+msgid "License Summary"
+msgstr "Lisans Özeti"
+
+#. module: license_management
+#: model:ir.model,name:license_management.model_license_term
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__license_term_id
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_term_form
+msgid "License Term"
+msgstr "Lisans Süresi"
+
+#. module: license_management
+#: model:ir.actions.act_window,name:license_management.action_license_term
+#: model:ir.ui.menu,name:license_management.menu_license_term
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_term_list
+msgid "License Terms"
+msgstr "Lisans Süreleri"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_product_product__license_type
+#: model:ir.model.fields,field_description:license_management.field_product_template__license_type
+msgid "License Type"
+msgstr "Lisans Türü"
+
+#. module: license_management
+#: model:mail.template,subject:license_management.mail_template_license_expiring
+msgid "License {{ object.license_no }} is expiring soon"
+msgstr "{{ object.license_no }} numaralı lisansın süresi yakında dolacak"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__license_ids
+#: model:ir.ui.menu,name:license_management.menu_license_subscription
+#: model_terms:ir.ui.view,arch_db:license_management.view_dealer_partner_kanban
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_program_form
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_list
+msgid "Licenses"
+msgstr "Lisanslar"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_partner_form_license
+msgid "Location"
+msgstr "Konum"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__main_contact_id
+#: model:ir.model.fields,field_description:license_management.field_res_users__main_contact_id
+msgid "Main Contact Person"
+msgstr "Ana Yetkili Kişi"
+
+#. module: license_management
+#: model_terms:ir.actions.act_window,help:license_management.action_license_subscription
+msgid "Manage software licenses, track expiration dates, and handle renewals."
+msgstr ""
+"Yazılım lisanslarını yönetin, sona erme tarihlerini takip edin ve "
+"yenilemeleri yapın."
+
+#. module: license_management
+#: model:res.groups,name:license_management.group_license_manager
+msgid "Manager"
+msgstr "Yönetici"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__manual_amount
+msgid "Manual Amount"
+msgstr "Manuel Tutar"
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_license_subscription__manual_amount
+msgid "Manual price override when not using pricelist"
+msgstr "Fiyat listesi kullanılmadığında manuel fiyat belirleme"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__message_has_error
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__message_has_error
+msgid "Message Delivery error"
+msgstr "Mesaj Teslimat Hatası"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__message_ids
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__message_ids
+msgid "Messages"
+msgstr "Mesajlar"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__license_history__action__modified
+msgid "Modified"
+msgstr "Değiştirildi"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__license_term__unit__months
+msgid "Months"
+msgstr "Ay"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__my_activity_date_deadline
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Benim Aktivite Son Tarihim"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__name
+#: model:ir.model.fields,field_description:license_management.field_license_term__name
+msgid "Name"
+msgstr "Ad"
+
+#. module: license_management
+#. odoo-python
+#: code:addons/license_management/models/license_subscription.py:0
+msgid "New"
+msgstr "Yeni"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_renewal_wizard__end_date
+msgid "New End Date"
+msgstr "Yeni Bitiş Tarihi"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_renewal_wizard__start_date
+msgid "New Start Date"
+msgstr "Yeni Başlangıç Tarihi"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__activity_date_deadline
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Sonraki Aktivite Bitiş Tarihi"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__activity_summary
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__activity_summary
+msgid "Next Activity Summary"
+msgstr "Sonraki Aktivite Özeti"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__activity_type_id
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__activity_type_id
+msgid "Next Activity Type"
+msgstr "Sonraki Aktivite Türü"
+
+#. module: license_management
+#. odoo-python
+#: code:addons/license_management/models/license_subscription.py:0
+msgid "No suitable subscription template found"
+msgstr "Uygun abonelik şablonu bulunamadı."
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_history__notes
+#: model:ir.model.fields,field_description:license_management.field_license_renewal_wizard__notes
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__notes
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_renewal_wizard
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_form
+msgid "Notes"
+msgstr "Notlar"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__message_needaction_counter
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Eylem Sayısı"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__message_has_error_counter
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__message_has_error_counter
+msgid "Number of errors"
+msgstr "Hata sayısı"
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_license_program__message_needaction_counter
+#: model:ir.model.fields,help:license_management.field_license_subscription__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Eylem gerektiren mesaj sayısı"
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_license_program__message_has_error_counter
+#: model:ir.model.fields,help:license_management.field_license_subscription__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Teslimat hatası olan mesaj sayısı"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_dealer_partner_kanban
+msgid "Partner"
+msgstr "İlgili Taraf"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__product_template__license_type__perpetual
+msgid "Perpetual"
+msgstr "Süresiz"
+
+#. module: license_management
+#: model:license.term,name:license_management.license_term_perpetual
+msgid "Perpetual (99 Years)"
+msgstr "Süresiz (99 Yıl)"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__pricelist_id
+msgid "Pricelist"
+msgstr "Fiyat Listesi"
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_license_subscription__pricelist_id
+msgid "Pricelist to calculate the license amount"
+msgstr "Lisans tutarını hesaplamak için fiyat listesi"
+
+#. module: license_management
+#: model:ir.model,name:license_management.model_product_template
+#: model:ir.model.fields,field_description:license_management.field_license_renewal_wizard__product_id
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__product_id
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_search
+msgid "Product"
+msgstr "Ürün"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__product_count
+msgid "Product Count"
+msgstr "Ürün Sayısı"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__product_ids
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_program_form
+msgid "Products"
+msgstr "Ürünler"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__program_id
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_search
+msgid "Program"
+msgstr ""
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__code
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__program_code
+#: model:ir.model.fields,field_description:license_management.field_product_product__program_code
+#: model:ir.model.fields,field_description:license_management.field_product_template__program_code
+msgid "Program Code"
+msgstr "Program Kodu"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__name
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_program_form
+msgid "Program Name"
+msgstr "Program Adı"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__reference_code
+#: model:ir.model.fields,field_description:license_management.field_product_product__reference_code
+#: model:ir.model.fields,field_description:license_management.field_product_template__reference_code
+msgid "Reference Code"
+msgstr "Referans Kodu"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_renewal_wizard
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_form
+msgid "Renew"
+msgstr "Yenile"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_renewal_wizard
+msgid "Renew License"
+msgstr "Lisansı Yenile"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_renewal_wizard__amount
+msgid "Renewal Amount"
+msgstr "Yenileme Tutarı"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__license_history__action__renewed
+msgid "Renewed"
+msgstr "Yenilendi"
+
+#. module: license_management
+#: model:ir.ui.menu,name:license_management.menu_license_reports
+msgid "Reports"
+msgstr "Raporlar"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__activity_user_id
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__activity_user_id
+msgid "Responsible User"
+msgstr "Sorumlu Kullanıcı"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__message_has_sms_error
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "SMS Teslimat Hatası"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__sale_order_id
+msgid "Sale Order"
+msgstr "Satış Siparişi"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_search
+msgid "Search Licenses"
+msgstr "Lisans Ara"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_program_search
+msgid "Search Programs"
+msgstr "Program Ara"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__sequence
+#: model:ir.model.fields,field_description:license_management.field_license_term__sequence
+msgid "Sequence"
+msgstr "Sıra"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__signboard_name
+#: model:ir.model.fields,field_description:license_management.field_res_users__signboard_name
+msgid "Signboard Name"
+msgstr "Tabela Adı"
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_res_partner__dealer_pricelist_id
+#: model:ir.model.fields,help:license_management.field_res_users__dealer_pricelist_id
+msgid "Special pricelist for dealer transactions"
+msgstr "Bayi işlemleri için özel fiyat listesi"
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_product_product__allowed_term_ids
+#: model:ir.model.fields,help:license_management.field_product_template__allowed_term_ids
+msgid "Specify which license terms are available for this product."
+msgstr "Bu ürün için hangi lisans sürelerinin mevcut olduğunu belirtin."
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__start_date
+msgid "Start Date"
+msgstr "Başlangıç Tarihi"
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_license_term__warning_days
+msgid ""
+"Start showing a 'Expiring Soon' warning this many days before the end date."
+msgstr ""
+"Bitiş tarihinden bu kadar gün önce ‘Yakında Sona Erecek’ uyarısı göstermeye "
+"başla."
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_license_term__urgent_warning_days
+msgid "Start showing an 'Urgent' warning this many days before the end date."
+msgstr "Bitiş tarihinden bu kadar gün önce ‘Acil’ uyarısı göstermeye başla."
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__state
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_search
+msgid "State"
+msgstr "Durum"
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_license_program__activity_state
+#: model:ir.model.fields,help:license_management.field_license_subscription__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Aktivitelere dayalı durum\\n\n"
+"Gecikmiş: Bitiş tarihi geçmiş olanlar\\n\n"
+"Bugün: Aktivite tarihi bugün olanlar\\n\n"
+"Planlanmış: Gelecek tarihli aktiviteler."
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__subscription_id
+#: model:ir.model.fields.selection,name:license_management.selection__product_template__license_type__subscription
+msgid "Subscription"
+msgstr "Abonelik"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__license_history__action__subscription_created
+msgid "Subscription Created"
+msgstr "Abonelik Oluşturuldu"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_res_partner__tax_number
+#: model:ir.model.fields,field_description:license_management.field_res_users__tax_number
+msgid "Tax Number"
+msgstr "Vergi Numarası"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_term_form
+msgid "Term Duration"
+msgstr "Süre Uzunluğu"
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_license_subscription__contact_person_id
+msgid "The contact person at the customer's company."
+msgstr "Müşteri şirketindeki yetkili kişi."
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_res_partner__dealer_id
+#: model:ir.model.fields,help:license_management.field_res_users__dealer_id
+msgid "The default dealer for this customer."
+msgstr "Bu müşteri için varsayılan bayi."
+
+#. module: license_management
+#. odoo-python
+#: code:addons/license_management/models/license_subscription.py:0
+msgid "This license was duplicated from license %s."
+msgstr "Bu lisans %s lisansından kopyalanmıştır."
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_list
+msgid "Total Amount"
+msgstr "Toplam Tutar"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__license_count
+msgid "Total Licenses"
+msgstr "Toplam Lisans"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__product_template__license_type__trial
+msgid "Trial"
+msgstr "Deneme"
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_license_program__activity_exception_decoration
+#: model:ir.model.fields,help:license_management.field_license_subscription__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Kayıt üzerindeki istisna aktivitesinin türü."
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_term__unit
+msgid "Unit"
+msgstr "Birim"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__license_subscription__state__urgent
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_form
+msgid "Urgent"
+msgstr "Acil"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_term__urgent_warning_days
+msgid "Urgent Warning (Days)"
+msgstr "Acil Uyarı (Gün)"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__use_manual_price
+msgid "Use Manual Price"
+msgstr "Manuel Fiyat Kullan"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_history__user_id
+#: model:res.groups,name:license_management.group_license_user
+msgid "User"
+msgstr "Kullanıcı"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_subscription_form
+msgid "Validity"
+msgstr "Geçerlilik"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_term__warning_days
+msgid "Warning Period (Days)"
+msgstr "Uyarı Periyodu (Gün)"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_term_form
+msgid "Warning Settings"
+msgstr "Uyarı Ayarları"
+
+#. module: license_management
+#: model:ir.model.fields,field_description:license_management.field_license_program__website_message_ids
+#: model:ir.model.fields,field_description:license_management.field_license_subscription__website_message_ids
+msgid "Website Messages"
+msgstr "Web Sitesi Mesajları"
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_license_program__website_message_ids
+#: model:ir.model.fields,help:license_management.field_license_subscription__website_message_ids
+msgid "Website communication history"
+msgstr "Web sitesi iletişim geçmişi"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__license_term__unit__weeks
+msgid "Weeks"
+msgstr "Hafta"
+
+#. module: license_management
+#: model:ir.model.fields.selection,name:license_management.selection__license_term__unit__years
+msgid "Years"
+msgstr "Yıl"
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_license_term__name
+msgid "e.g., '1 Month Trial', '1 Year Standard', '3 Years Enterprise'"
+msgstr "örn., '1 Aylık Deneme', '1 Yıllık Standart', '3 Yıllık Kurumsal'"
+
+#. module: license_management
+#: model_terms:ir.ui.view,arch_db:license_management.view_license_term_form
+msgid "e.g., 1 Year Standard"
+msgstr "örn., 1 Yıl Standart"
+
+#. module: license_management
+#: model:ir.model.fields,help:license_management.field_res_partner__contact_role
+#: model:ir.model.fields,help:license_management.field_res_users__contact_role
+msgid "e.g., Technical Contact, Billing Contact"
+msgstr "örn., Teknik Sorumlu, Fatura Sorumlusu"

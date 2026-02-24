@@ -1,0 +1,379 @@
+{
+    "version": 21,
+    "sheets": [
+        {
+            "id": "sheet_dashboard",
+            "name": "Dashboard",
+            "colNumber": 8,
+            "rowNumber": 80,
+            "rows": {
+                "1": {
+                    "size": 30
+                },
+                "2": {
+                    "size": 26
+                },
+                "4": {
+                    "size": 22
+                },
+                "5": {
+                    "size": 22
+                },
+                "6": {
+                    "size": 22
+                },
+                "17": {
+                    "size": 26
+                },
+                "18": {
+                    "size": 24
+                },
+                "19": {
+                    "size": 24
+                },
+                "20": {
+                    "size": 24
+                },
+                "21": {
+                    "size": 24
+                },
+                "22": {
+                    "size": 24
+                },
+                "24": {
+                    "size": 22
+                }
+            },
+            "cols": {
+                "0": {
+                    "size": 36
+                },
+                "1": {
+                    "size": 220
+                },
+                "2": {
+                    "size": 180
+                }
+            },
+            "merges": [],
+            "cells": {
+                "A2": {
+                    "content": "[License Health]",
+                    "style": 1
+                },
+                "A3": {
+                    "content": "=_t(\"Key metrics for license portfolio\")",
+                    "style": 5
+                },
+                "A5": {
+                    "content": "=_t(\"Filters\")",
+                    "style": 8
+                },
+                "A6": {
+                    "content": "=_t(\"License state\")",
+                    "style": 9
+                },
+                "B6": {
+                    "content": "active",
+                    "style": 10
+                },
+                "A7": {
+                    "content": "=_t(\"Program ID\")",
+                    "style": 9
+                },
+                "B7": {
+                    "content": ""
+                },
+                "A17": {
+                    "content": "=_t(\"Top Dealers by Active Licenses\")",
+                    "style": 8
+                },
+                "A18": {
+                    "content": "=_t(\"Rank\")",
+                    "style": 2
+                },
+                "B18": {
+                    "content": "=_t(\"Dealer\")",
+                    "style": 2
+                },
+                "C18": {
+                    "content": "=_t(\"Active Licenses\")",
+                    "style": 2
+                },
+                "A19": {
+                    "content": "=IF(B19=\"\",\"\",ROW()-18)",
+                    "style": 3
+                },
+                "B19": {
+                    "content": "=IFERROR(ODOO.LICENSE.TOP_DEALER_NAME(ROW()-18,$B$6,$B$7,$B$8,$B$9),\"\")",
+                    "style": 4
+                },
+                "C19": {
+                    "content": "=IF(B19=\"\",\"\",IFERROR(ODOO.LICENSE.TOP_DEALER_COUNT(ROW()-18,$B$6,$B$7,$B$8,$B$9),0))",
+                    "style": 4
+                },
+                "A20": {
+                    "content": "=IF(B20=\"\",\"\",ROW()-18)",
+                    "style": 3
+                },
+                "B20": {
+                    "content": "=IFERROR(ODOO.LICENSE.TOP_DEALER_NAME(ROW()-18,$B$6,$B$7,$B$8,$B$9),\"\")",
+                    "style": 4
+                },
+                "C20": {
+                    "content": "=IF(B20=\"\",\"\",IFERROR(ODOO.LICENSE.TOP_DEALER_COUNT(ROW()-18,$B$6,$B$7,$B$8,$B$9),0))",
+                    "style": 4
+                },
+                "A21": {
+                    "content": "=IF(B21=\"\",\"\",ROW()-18)",
+                    "style": 3
+                },
+                "B21": {
+                    "content": "=IFERROR(ODOO.LICENSE.TOP_DEALER_NAME(ROW()-18,$B$6,$B$7,$B$8,$B$9),\"\")",
+                    "style": 4
+                },
+                "C21": {
+                    "content": "=IF(B21=\"\",\"\",IFERROR(ODOO.LICENSE.TOP_DEALER_COUNT(ROW()-18,$B$6,$B$7,$B$8,$B$9),0))",
+                    "style": 4
+                },
+                "A22": {
+                    "content": "=IF(B22=\"\",\"\",ROW()-18)",
+                    "style": 3
+                },
+                "B22": {
+                    "content": "=IFERROR(ODOO.LICENSE.TOP_DEALER_NAME(ROW()-18,$B$6,$B$7,$B$8,$B$9),\"\")",
+                    "style": 4
+                },
+                "C22": {
+                    "content": "=IF(B22=\"\",\"\",IFERROR(ODOO.LICENSE.TOP_DEALER_COUNT(ROW()-18,$B$6,$B$7,$B$8,$B$9),0))",
+                    "style": 4
+                },
+                "A23": {
+                    "content": "=IF(B23=\"\",\"\",ROW()-18)",
+                    "style": 3
+                },
+                "B23": {
+                    "content": "=IFERROR(ODOO.LICENSE.TOP_DEALER_NAME(ROW()-18,$B$6,$B$7,$B$8,$B$9),\"\")",
+                    "style": 4
+                },
+                "C23": {
+                    "content": "=IF(B23=\"\",\"\",IFERROR(ODOO.LICENSE.TOP_DEALER_COUNT(ROW()-18,$B$6,$B$7,$B$8,$B$9),0))",
+                    "style": 4
+                },
+                "A25": {
+                    "content": "=_t(\"TIP: Leave filters empty to see the global ranking.\")",
+                    "style": 6
+                },
+                "A8": {
+                    "content": "=_t(\"Date From\")",
+                    "style": 8
+                },
+                "B8": {
+                    "content": "",
+                    "style": 9
+                },
+                "A9": {
+                    "content": "=_t(\"Date To\")",
+                    "style": 8
+                },
+                "B9": {
+                    "content": "",
+                    "style": 9
+                }
+            },
+            "styles": {},
+            "formats": {},
+            "borders": {
+                "A18:C18": 1,
+                "A19:C23": 2
+            },
+            "conditionalFormats": [
+                {
+                    "rule": {
+                        "type": "DataBarRule",
+                        "color": 14177041,
+                        "rangeValues": "C19:C23"
+                    },
+                    "id": "databar-top-dealers",
+                    "ranges": [
+                        "C19:C23"
+                    ]
+                }
+            ],
+            "figures": [
+                {
+                    "id": "fig_licenses_total",
+                    "x": 0,
+                    "y": 90,
+                    "width": 220,
+                    "height": 120,
+                    "tag": "chart",
+                    "data": {
+                        "type": "scorecard",
+                        "background": "#F59E0B",
+                        "title": {
+                            "text": "Total Licenses",
+                            "bold": true,
+                            "textColor": "#FFFFFF"
+                        },
+                        "keyValue": "Data!B1",
+                        "valueColor": "#FFFFFF"
+                    }
+                },
+                {
+                    "id": "fig_licenses_active",
+                    "x": 240,
+                    "y": 90,
+                    "width": 220,
+                    "height": 120,
+                    "tag": "chart",
+                    "data": {
+                        "type": "scorecard",
+                        "background": "#10B981",
+                        "title": {
+                            "text": "Active",
+                            "bold": true,
+                            "textColor": "#FFFFFF"
+                        },
+                        "keyValue": "Data!B2",
+                        "valueColor": "#FFFFFF"
+                    }
+                },
+                {
+                    "id": "fig_licenses_expiring",
+                    "x": 480,
+                    "y": 90,
+                    "width": 220,
+                    "height": 120,
+                    "tag": "chart",
+                    "data": {
+                        "type": "scorecard",
+                        "background": "#F97316",
+                        "title": {
+                            "text": "Expiring Soon",
+                            "bold": true,
+                            "textColor": "#FFFFFF"
+                        },
+                        "keyValue": "Data!B3",
+                        "valueColor": "#FFFFFF"
+                    }
+                },
+                {
+                    "id": "fig_licenses_expired",
+                    "x": 720,
+                    "y": 90,
+                    "width": 220,
+                    "height": 120,
+                    "tag": "chart",
+                    "data": {
+                        "type": "scorecard",
+                        "background": "#EF4444",
+                        "title": {
+                            "text": "Expired",
+                            "bold": true,
+                            "textColor": "#FFFFFF"
+                        },
+                        "keyValue": "Data!B4",
+                        "valueColor": "#FFFFFF"
+                    }
+                }
+            ],
+            "tables": [],
+            "areGridLinesVisible": true,
+            "isVisible": true
+        },
+        {
+            "id": "sheet_data",
+            "name": "Data",
+            "cells": {
+                "A1": {
+                    "content": "Total Licenses"
+                },
+                "B1": {
+                    "content": "=ODOO.LICENSE.COUNT(\"\",Dashboard!B6,Dashboard!B7,Dashboard!B8,Dashboard!B9)"
+                },
+                "A2": {
+                    "content": "Active Licenses"
+                },
+                "B2": {
+                    "content": "=ODOO.LICENSE.ACTIVE(\"\",Dashboard!B7,Dashboard!B8,Dashboard!B9)"
+                },
+                "A3": {
+                    "content": "Expiring Soon"
+                },
+                "B3": {
+                    "content": "=ODOO.LICENSE.EXPIRING(\"\",Dashboard!B7,Dashboard!B8,Dashboard!B9)"
+                },
+                "A4": {
+                    "content": "Expired Licenses"
+                },
+                "B4": {
+                    "content": "=ODOO.LICENSE.EXPIRED(\"\",Dashboard!B7,Dashboard!B8,Dashboard!B9)"
+                }
+            },
+            "isVisible": false
+        }
+    ],
+    "styles": {
+        "1": {
+            "textColor": "#7C2D12",
+            "bold": true,
+            "fontSize": 20
+        },
+        "2": {
+            "textColor": "#7C2D12",
+            "bold": true,
+            "fontSize": 12,
+            "fillColor": "#FDE68A"
+        },
+        "3": {
+            "textColor": "#92400E",
+            "fontSize": 11
+        },
+        "4": {
+            "textColor": "#312E81",
+            "bold": true,
+            "fontSize": 12
+        },
+        "5": {
+            "textColor": "#9A3412",
+            "italic": true
+        },
+        "6": {
+            "textColor": "#B45309",
+            "italic": true,
+            "fontSize": 10
+        },
+        "7": {
+            "textColor": "#7C2D12",
+            "bold": true,
+            "fontSize": 13
+        },
+        "8": {
+            "textColor": "#9A3412",
+            "fontSize": 11
+        },
+        "9": {
+            "textColor": "#7C2D12",
+            "fontSize": 11
+        },
+        "10": {
+            "textColor": "#7C2D12",
+            "bold": true
+        }
+    },
+    "formats": {},
+    "borders": {
+        "1": {
+            "bottom": {
+                "style": "thin",
+                "color": "#FED7AA"
+            }
+        }
+    },
+    "pivots": {},
+    "pivotNextId": 1,
+    "lists": {},
+    "listNextId": 1,
+    "revisionId": "START_REVISION"
+}

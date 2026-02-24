@@ -1,0 +1,493 @@
+{
+    "version": 21,
+    "sheets": [
+        {
+            "id": "sheet1",
+            "name": "Dashboard",
+            "colNumber": 7,
+            "rowNumber": 100,
+            "rows": {
+                "4": {
+                    "size": 24
+                },
+                "5": {
+                    "size": 24
+                },
+                "6": {
+                    "size": 24
+                }
+            },
+            "cols": {
+                "0": {
+                    "size": 36
+                },
+                "1": {
+                    "size": 220
+                },
+                "2": {
+                    "size": 150
+                },
+                "3": {
+                    "size": 60
+                },
+                "4": {
+                    "size": 220
+                },
+                "5": {
+                    "size": 150
+                },
+                "6": {
+                    "size": 60
+                }
+            },
+            "merges": [],
+            "cells": {
+                "A6": {
+                    "content": "=_t(\"To\")",
+                    "style": 3
+                },
+                "A4": {
+                    "content": "=_t(\"Ticket Date Filter (YYYY-MM-DD)\")",
+                    "style": 2
+                },
+                "A5": {
+                    "content": "=_t(\"From\")",
+                    "style": 3
+                },
+                "B5": {
+                    "content": "=IF(B5=\"\",\"\",B5)",
+                    "style": 4
+                },
+                "B6": {
+                    "content": "=IF(B6=\"\",\"\",B6)",
+                    "style": 4
+                },
+                "E4": {
+                    "content": "=_t(\"License Date Filter (YYYY-MM-DD)\")",
+                    "style": 2
+                },
+                "E5": {
+                    "content": "=_t(\"From\")",
+                    "style": 3
+                },
+                "F5": {
+                    "content": "=IF(F5=\"\",\"\",F5)",
+                    "style": 4
+                },
+                "E6": {
+                    "content": "=_t(\"To\")",
+                    "style": 3
+                },
+                "F6": {
+                    "content": "=IF(F6=\"\",\"\",F6)",
+                    "style": 4
+                },
+                "A2": {
+                    "content": "[Helpdesk Performance]",
+                    "style": 1
+                },
+                "A3": {
+                    "content": "=_t(\"Support KPIs overview\")",
+                    "style": 5
+                },
+                "A22": {
+                    "content": "=_t(\"Top Customers by Open Tickets\")",
+                    "style": 7
+                },
+                "A23": {
+                    "content": "=_t(\"Rank\")",
+                    "style": 2
+                },
+                "B23": {
+                    "content": "=_t(\"Customer\")",
+                    "style": 2
+                },
+                "C23": {
+                    "content": "=_t(\"Open Tickets\")",
+                    "style": 2
+                },
+                "A24": {
+                    "content": "=IF(B24=\"\",\"\",1)",
+                    "style": 8
+                },
+                "B24": {
+                    "content": "=IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_NAME(1,\"\",FALSE,$B$5,$B$6),\"\")",
+                    "style": 9
+                },
+                "C24": {
+                    "content": "=IF(B24=\"\",\"\",IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_COUNT(1,\"\",FALSE,$B$5,$B$6),0))",
+                    "style": 9
+                },
+                "A25": {
+                    "content": "=IF(B25=\"\",\"\",2)",
+                    "style": 8
+                },
+                "B25": {
+                    "content": "=IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_NAME(2,\"\",FALSE,$B$5,$B$6),\"\")",
+                    "style": 9
+                },
+                "C25": {
+                    "content": "=IF(B25=\"\",\"\",IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_COUNT(2,\"\",FALSE,$B$5,$B$6),0))",
+                    "style": 9
+                },
+                "A26": {
+                    "content": "=IF(B26=\"\",\"\",3)",
+                    "style": 8
+                },
+                "B26": {
+                    "content": "=IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_NAME(3,\"\",FALSE,$B$5,$B$6),\"\")",
+                    "style": 9
+                },
+                "C26": {
+                    "content": "=IF(B26=\"\",\"\",IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_COUNT(3,\"\",FALSE,$B$5,$B$6),0))",
+                    "style": 9
+                },
+                "A27": {
+                    "content": "=IF(B27=\"\",\"\",4)",
+                    "style": 8
+                },
+                "B27": {
+                    "content": "=IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_NAME(4,\"\",FALSE,$B$5,$B$6),\"\")",
+                    "style": 9
+                },
+                "C27": {
+                    "content": "=IF(B27=\"\",\"\",IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_COUNT(4,\"\",FALSE,$B$5,$B$6),0))",
+                    "style": 9
+                },
+                "A28": {
+                    "content": "=IF(B28=\"\",\"\",5)",
+                    "style": 8
+                },
+                "B28": {
+                    "content": "=IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_NAME(5,\"\",FALSE,$B$5,$B$6),\"\")",
+                    "style": 9
+                },
+                "C28": {
+                    "content": "=IF(B28=\"\",\"\",IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_COUNT(5,\"\",FALSE,$B$5,$B$6),0))",
+                    "style": 9
+                },
+                "E22": {
+                    "content": "=_t(\"Top Dealers by Active Licenses\")",
+                    "style": 7
+                },
+                "E23": {
+                    "content": "=_t(\"Rank\")",
+                    "style": 2
+                },
+                "F23": {
+                    "content": "=_t(\"Dealer\")",
+                    "style": 2
+                },
+                "G23": {
+                    "content": "=_t(\"Active Licenses\")",
+                    "style": 2
+                },
+                "E24": {
+                    "content": "=IF(F24=\"\",\"\",1)",
+                    "style": 8
+                },
+                "F24": {
+                    "content": "=IFERROR(ODOO.LICENSE.TOP_DEALER_NAME(1,\"active\",\"\",$F$5,$F$6),\"\")",
+                    "style": 9
+                },
+                "G24": {
+                    "content": "=IF(F24=\"\",\"\",IFERROR(ODOO.LICENSE.TOP_DEALER_COUNT(1,\"active\",\"\",$F$5,$F$6),0))",
+                    "style": 9
+                },
+                "E25": {
+                    "content": "=IF(F25=\"\",\"\",2)",
+                    "style": 8
+                },
+                "F25": {
+                    "content": "=IFERROR(ODOO.LICENSE.TOP_DEALER_NAME(2,\"active\",\"\",$F$5,$F$6),\"\")",
+                    "style": 9
+                },
+                "G25": {
+                    "content": "=IF(F25=\"\",\"\",IFERROR(ODOO.LICENSE.TOP_DEALER_COUNT(2,\"active\",\"\",$F$5,$F$6),0))",
+                    "style": 9
+                },
+                "E26": {
+                    "content": "=IF(F26=\"\",\"\",3)",
+                    "style": 8
+                },
+                "F26": {
+                    "content": "=IFERROR(ODOO.LICENSE.TOP_DEALER_NAME(3,\"active\",\"\",$F$5,$F$6),\"\")",
+                    "style": 9
+                },
+                "G26": {
+                    "content": "=IF(F26=\"\",\"\",IFERROR(ODOO.LICENSE.TOP_DEALER_COUNT(3,\"active\",\"\",$F$5,$F$6),0))",
+                    "style": 9
+                },
+                "E27": {
+                    "content": "=IF(F27=\"\",\"\",4)",
+                    "style": 8
+                },
+                "F27": {
+                    "content": "=IFERROR(ODOO.LICENSE.TOP_DEALER_NAME(4,\"active\",\"\",$F$5,$F$6),\"\")",
+                    "style": 9
+                },
+                "G27": {
+                    "content": "=IF(F27=\"\",\"\",IFERROR(ODOO.LICENSE.TOP_DEALER_COUNT(4,\"active\",\"\",$F$5,$F$6),0))",
+                    "style": 9
+                },
+                "E28": {
+                    "content": "=IF(F28=\"\",\"\",5)",
+                    "style": 8
+                },
+                "F28": {
+                    "content": "=IFERROR(ODOO.LICENSE.TOP_DEALER_NAME(5,\"active\",\"\",$F$5,$F$6),\"\")",
+                    "style": 9
+                },
+                "G28": {
+                    "content": "=IF(F28=\"\",\"\",IFERROR(ODOO.LICENSE.TOP_DEALER_COUNT(5,\"active\",\"\",$F$5,$F$6),0))",
+                    "style": 9
+                },
+                "A30": {
+                    "content": "=_t(\"TIP: Adjust filters and press Enter to refresh the metrics.\")",
+                    "style": 6
+                }
+            },
+            "styles": {
+                "A6": 1,
+                "A22": 1,
+                "E22": 1,
+                "A23:B23": 2,
+                "E23:F23": 2,
+                "A24:A26": 3,
+                "B24:B26": 4,
+                "E24:E26": 3,
+                "F24:F26": 4
+            },
+            "formats": {},
+            "borders": {
+                "A23:C23": 1,
+                "A24:C28": 2,
+                "E23:G23": 1,
+                "E24:G28": 2
+            },
+            "conditionalFormats": [
+                {
+                    "rule": {
+                        "type": "DataBarRule",
+                        "color": 15726335,
+                        "rangeValues": "B24:B26"
+                    },
+                    "id": "databar-dealers",
+                    "ranges": [
+                        "A24:A26"
+                    ]
+                },
+                {
+                    "rule": {
+                        "type": "DataBarRule",
+                        "color": 16775149,
+                        "rangeValues": "F24:F26"
+                    },
+                    "id": "databar-customers",
+                    "ranges": [
+                        "E24:E26"
+                    ]
+                }
+            ],
+            "figures": [
+                {
+                    "id": "fig-total-tickets",
+                    "x": 0,
+                    "y": 11,
+                    "width": 220,
+                    "height": 100,
+                    "tag": "chart",
+                    "data": {
+                        "type": "scorecard",
+                        "background": "#EFF6FF",
+                        "title": {
+                            "text": "Total Tickets",
+                            "bold": true
+                        },
+                        "keyValue": "Data!B1"
+                    }
+                },
+                {
+                    "id": "fig-open-tickets",
+                    "x": 230,
+                    "y": 11,
+                    "width": 220,
+                    "height": 100,
+                    "tag": "chart",
+                    "data": {
+                        "type": "scorecard",
+                        "background": "#EFF6FF",
+                        "title": {
+                            "text": "Open Tickets",
+                            "bold": true
+                        },
+                        "keyValue": "Data!B2"
+                    }
+                },
+                {
+                    "id": "fig-total-licenses",
+                    "x": 460,
+                    "y": 11,
+                    "width": 220,
+                    "height": 100,
+                    "tag": "chart",
+                    "data": {
+                        "type": "scorecard",
+                        "background": "#FFF7ED",
+                        "title": {
+                            "text": "Total Licenses",
+                            "bold": true
+                        },
+                        "keyValue": "Data!B3"
+                    }
+                },
+                {
+                    "id": "fig-active-licenses",
+                    "x": 690,
+                    "y": 11,
+                    "width": 220,
+                    "height": 100,
+                    "tag": "chart",
+                    "data": {
+                        "type": "scorecard",
+                        "background": "#FFF7ED",
+                        "title": {
+                            "text": "Active Licenses",
+                            "bold": true
+                        },
+                        "keyValue": "Data!B4"
+                    }
+                },
+                {
+                    "id": "fig-monthly-chart",
+                    "x": 0,
+                    "y": 155,
+                    "width": 1095,
+                    "height": 344,
+                    "tag": "chart",
+                    "data": {
+                        "type": "odoo_bar",
+                        "stacked": true,
+                        "background": "#FFFFFF",
+                        "legendPosition": "top",
+                        "title": {},
+                        "metaData": {
+                            "resModel": "helpdesk.ticket",
+                            "mode": "bar",
+                            "measure": "__count",
+                            "order": null,
+                            "groupBy": [
+                                "create_date:month"
+                            ]
+                        },
+                        "searchParams": {
+                            "domain": [],
+                            "context": {},
+                            "groupBy": [
+                                "create_date:month"
+                            ],
+                            "orderBy": []
+                        }
+                    }
+                }
+            ],
+            "tables": [],
+            "areGridLinesVisible": true,
+            "isVisible": true
+        },
+        {
+            "id": "data_sheet",
+            "name": "Data",
+            "cells": {
+                "A1": {
+                    "content": "Total Tickets"
+                },
+                "B1": {
+                    "content": "=ODOO.HELPDESK.COUNT(\"\",\"\",\"\",\"\",Dashboard!B5,Dashboard!B6)"
+                },
+                "A2": {
+                    "content": "Open Tickets"
+                },
+                "B2": {
+                    "content": "=ODOO.HELPDESK.OPEN(\"\",Dashboard!B5,Dashboard!B6)"
+                },
+                "A3": {
+                    "content": "Total Licenses"
+                },
+                "B3": {
+                    "content": "=ODOO.LICENSE.COUNT(\"\",\"all\",\"\",Dashboard!F5,Dashboard!F6)"
+                },
+                "A4": {
+                    "content": "Active Licenses"
+                },
+                "B4": {
+                    "content": "=ODOO.LICENSE.ACTIVE(\"\",\"\",Dashboard!F5,Dashboard!F6)"
+                }
+            },
+            "isVisible": false
+        }
+    ],
+    "styles": {
+        "1": {
+            "textColor": "#0F172A",
+            "bold": true,
+            "fontSize": 20
+        },
+        "2": {
+            "textColor": "#1E293B",
+            "bold": true,
+            "fontSize": 12
+        },
+        "3": {
+            "textColor": "#475569",
+            "fontSize": 11
+        },
+        "4": {
+            "textColor": "#0F172A",
+            "fontSize": 11
+        },
+        "5": {
+            "textColor": "#64748B",
+            "italic": true
+        },
+        "6": {
+            "textColor": "#94A3B8",
+            "italic": true,
+            "fontSize": 10
+        },
+        "7": {
+            "textColor": "#0F172A",
+            "bold": true,
+            "fontSize": 13
+        },
+        "8": {
+            "textColor": "#64748B",
+            "fontSize": 11
+        },
+        "9": {
+            "textColor": "#111827",
+            "bold": true,
+            "fontSize": 12
+        }
+    },
+    "formats": {},
+    "borders": {
+        "1": {
+            "bottom": {
+                "style": "thin",
+                "color": "#CCCCCC"
+            }
+        },
+        "2": {
+            "top": {
+                "style": "thin",
+                "color": "#CCCCCC"
+            }
+        }
+    },
+    "pivots": {},
+    "pivotNextId": 1,
+    "lists": {},
+    "listNextId": 1,
+    "revisionId": "START_REVISION"
+}

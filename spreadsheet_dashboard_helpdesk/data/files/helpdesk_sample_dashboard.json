@@ -1,0 +1,83 @@
+{
+    "version": 21,
+    "sheets": [
+        {
+            "id": "sheet1",
+            "name": "Dashboard",
+            "cells": {
+                // Döngüsel referanslar düzeltildi
+                "B5": {
+                    "content": "",  // Kullanıcı tarafından doldurulacak
+                    "style": 4,
+                    "format": "yyyy-mm-dd"  // Tarih formatı ekle
+                },
+                "B6": {
+                    "content": "",
+                    "style": 4,
+                    "format": "yyyy-mm-dd"
+                },
+                "F5": {
+                    "content": "",
+                    "style": 4,
+                    "format": "yyyy-mm-dd"
+                },
+                "F6": {
+                    "content": "",
+                    "style": 4,
+                    "format": "yyyy-mm-dd"
+                },
+                
+                // Top Customer formülleri düzeltildi
+                "B24": {
+                    "content": "=IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_NAME(1,\"\",FALSE,$B$5,$B$6),\"\")",
+                    "style": 9
+                },
+                "C24": {
+                    "content": "=IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_COUNT(1,\"\",FALSE,$B$5,$B$6),0)",
+                    "style": 9
+                },
+                
+                // Top Dealer formülleri düzeltildi
+                "F24": {
+                    "content": "=IFERROR(ODOO.LICENSE.TOP_DEALER_NAME(1,\"active\",\"\",$F$5,$F$6),\"\")",
+                    "style": 9
+                },
+                "G24": {
+                    "content": "=IFERROR(ODOO.LICENSE.TOP_DEALER_COUNT(1,\"active\",\"\",$F$5,$F$6),0)",
+                    "style": 9
+                }
+            }
+        },
+        {
+            "id": "data_sheet",
+            "name": "Data",
+            "cells": {
+                "A1": {
+                    "content": "Total Tickets"
+                },
+                "B1": {
+                    "content": "=ODOO.HELPDESK.COUNT(\"\",\"\",\"\",\"\",Dashboard!B5,Dashboard!B6)"
+                },
+                "A2": {
+                    "content": "Open Tickets"
+                },
+                "B2": {
+                    "content": "=ODOO.HELPDESK.OPEN(\"\",Dashboard!B5,Dashboard!B6)"
+                },
+                "A3": {
+                    "content": "Total Licenses"
+                },
+                "B3": {
+                    "content": "=ODOO.LICENSE.COUNT(\"\",\"\",\"\",Dashboard!F5,Dashboard!F6)"
+                },
+                "A4": {
+                    "content": "Active Licenses"
+                },
+                "B4": {
+                    "content": "=ODOO.LICENSE.ACTIVE(\"\",\"\",Dashboard!F5,Dashboard!F6)"
+                }
+            },
+            "isVisible": false
+        }
+    ]
+}

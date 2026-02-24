@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+        <!-- AYLIK SÜRELER -->
+        <record id="license_term_1_month" model="license.term">
+            <field name="name">1 Month</field>
+            <field name="duration">1</field>
+            <field name="unit">months</field>
+            <field name="sequence">10</field>
+        </record>
+
+        <record id="license_term_3_months" model="license.term">
+            <field name="name">3 Months</field>
+            <field name="duration">3</field>
+            <field name="unit">months</field>
+            <field name="sequence">20</field>
+        </record>
+
+        <record id="license_term_6_months" model="license.term">
+            <field name="name">6 Months</field>
+            <field name="duration">6</field>
+            <field name="unit">months</field>
+            <field name="sequence">30</field>
+        </record>
+
+        <!-- YILLIK SÜRELER -->
+        <record id="license_term_1_year" model="license.term">
+            <field name="name">1 Year</field>
+            <field name="duration">1</field>
+            <field name="unit">years</field>
+            <field name="sequence">40</field>
+        </record>
+
+        <record id="license_term_2_years" model="license.term">
+            <field name="name">2 Years</field>
+            <field name="duration">2</field>
+            <field name="unit">years</field>
+            <field name="sequence">50</field>
+        </record>
+
+        <record id="license_term_3_years" model="license.term">
+            <field name="name">3 Years</field>
+            <field name="duration">3</field>
+            <field name="unit">years</field>
+            <field name="sequence">60</field>
+        </record>
+
+        <!-- ÖZEL SÜRELER -->
+        <record id="license_term_15_days_trial" model="license.term">
+            <field name="name">15-Day Trial</field>
+            <field name="duration">15</field>
+            <field name="unit">days</field>
+            <field name="sequence">5</field>
+            <field name="description">15-day trial period for new customers.</field>
+        </record>
+
+        <record id="license_term_perpetual" model="license.term">
+            <field name="name">Perpetual (99 Years)</field>
+            <field name="duration">99</field>
+            <field name="unit">years</field>
+            <field name="sequence">100</field>
+            <field name="description">Represents a perpetual license with a very long duration.</field>
+        </record>
+
+</odoo>

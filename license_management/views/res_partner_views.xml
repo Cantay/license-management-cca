@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Server Action için kayıt -->
+    <record id="action_bulk_cancel_server" model="ir.actions.server">
+        <field name="name">Cancel Selected Licenses</field>
+        <field name="model_id" ref="model_license_subscription"/>
+        <field name="binding_model_id" ref="model_license_subscription"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+action = model.action_bulk_cancel()
+        </field>
+    </record>
+
+    <record id="view_partner_form_license" model="ir.ui.view">
+        <field name="name">res.partner.form.license</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='sales_purchases']//group[@name='sale']" position="inside">
+                <field name="dealer_id" invisible="is_dealer"
+                       context="{'default_is_dealer': False}"/>
+            </xpath>
+            <xpath expr="//page[@name='contact_addresses']" position="attributes">
+                <attribute name="autofocus"/>
+            </xpath>
+            <xpath expr="//page[@name='contact_addresses']" position="before">
+                <page string="License Info" name="license_info" invisible="not is_dealer" autofocus="autofocus">
+                    <group>
+                        <group string="Dealer Information">
+                            <field name="is_dealer"/>
+                            <field name="dealer_code" invisible="not is_dealer"/>
+                            <field name="dealer_since" invisible="not is_dealer"/>
+                            <field name="tax_number" invisible="not is_dealer"/>
+                            <field name="signboard_name" invisible="not is_dealer"/>
+                        </group>
+                        <group string="Location">
+                            <field name="district"/>
+                        </group>
+                        <group string="License Summary" invisible="not is_dealer">
+                            <field name="license_count"/>
+                            <field name="active_license_count"/>
+                            <field name="expired_license_count"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='child_ids']" position="before">
+                <group invisible="not is_company">
+                    <field name="main_contact_id"/>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='function']" position="after">
+                <field name="contact_role" invisible="is_company"/>
+            </xpath>
+             <xpath expr="//field[@name='name']" position="after">
+                <field name="signboard_name"/>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="customer_since"/>
+                <field name="is_dealer" widget="boolean_toggle"/>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" type="object"
+                        name="action_view_licenses"
+                        icon="fa-key"
+                        invisible="not is_dealer or license_count == 0">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="license_count"/>
+                        </span>
+                        <span class="o_stat_text">Licenses</span>
+                    </div>
+                </button>
+                <button class="oe_stat_button" type="object"
+                        name="action_view_customers"
+                        icon="fa-users"
+                        invisible="not is_dealer or customer_count == 0">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="customer_count"/>
+                        </span>
+                        <span class="o_stat_text">Customers</span>
+                    </div>
+                </button>
+                <button class="oe_stat_button" type="object"
+                        name="action_view_licenses"
+                        icon="fa-key"
+                        invisible="license_count == 0">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="license_count"/>
+                        </span>
+                        <span class="o_stat_text">All Licenses</span>
+                    </div>
+                </button>
+                <!-- Aktif Lisanslar Butonu -->
+                <button class="oe_stat_button" type="object"
+                        name="action_view_active_licenses"
+                        icon="fa-check-circle"
+                        invisible="active_license_count == 0">
+                    <div class="o_field_widget o_stat_info text-success">
+                        <span class="o_stat_value">
+                            <field name="active_license_count"/>
+                        </span>
+                        <span class="o_stat_text">Active Licenses</span>
+                    </div>
+                </button>
+
+                <!-- Süresi Dolmuş Lisanslar Butonu -->
+                <button class="oe_stat_button" type="object"
+                        name="action_view_expired_licenses"
+                        icon="fa-times-circle"
+                        invisible="expired_license_count == 0">
+                    <div class="o_field_widget o_stat_info text-danger">
+                        <span class="o_stat_value">
+                            <field name="expired_license_count"/>
+                        </span>
+                        <span class="o_stat_text">Expired Licenses</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_dealer_partner_kanban" model="ir.ui.view">
+        <field name="name">res.partner.dealer.kanban</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <kanban class="o_res_partner_kanban">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="city"/>
+                <field name="country_id"/>
+                <field name="dealer_code"/>
+                <field name="customer_count"/>
+                <field name="license_count"/>
+                <field name="active_license_count"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_semantic_html_override">
+                            <div class="o_kanban_image">
+                                <a type="open">
+                                    <img t-att-src="kanban_image('res.partner', 'image_128', record.id.raw_value)"
+                                         alt="Partner" class="o_image_64_contain"/>
+                                </a>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title">
+                                    <a type="open">
+                                        <field name="name"/>
+                                    </a>
+                                </strong>
+                                <div t-if="record.dealer_code.value" class="text-muted">
+                                    Code:
+                                    <field name="dealer_code"/>
+                                </div>
+                                <div t-if="record.city.value or record.country_id.value">
+                                    <i class="fa fa-map-marker" aria-label="Address"/>
+                                    <t t-if="record.city.value">
+                                        <field name="city"/>
+                                    </t>
+                                    <t t-if="record.city.value and record.country_id.value">,</t>
+                                    <t t-if="record.country_id.value">
+                                        <field name="country_id"/>
+                                    </t>
+                                </div>
+                                <!-- DEĞİŞİKLİK BAŞLANGICI: invisible yerine t-if kullanılıyor -->
+                                <div class="o_kanban_record_bottom mt-2">
+                                    <div class="oe_kanban_bottom_left">
+                                        <t t-if="record.customer_count.raw_value > 0">
+                                            <button name="action_view_customers" type="object"
+                                                    class="btn btn-sm btn-link px-0">
+                                                <i class="fa fa-users" title="View Customers"/>
+                                                <span class="ml-1">
+                                                    <field name="customer_count"/>
+                                                    Customers
+                                                </span>
+                                            </button>
+                                        </t>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <t t-if="record.license_count.raw_value > 0">
+                                            <button name="action_view_licenses" type="object"
+                                                    class="btn btn-sm btn-link px-0">
+                                                <i class="fa fa-key" title="View All Licenses"/>
+                                                <span class="ml-1">
+                                                    <field name="license_count"/>
+                                                    Licenses
+                                                </span>
+                                            </button>
+                                        </t>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left"/>
+                                    <div class="oe_kanban_bottom_right">
+                                        <t t-if="record.active_license_count.raw_value > 0">
+                                            <button name="action_view_active_licenses" type="object"
+                                                    class="btn btn-sm btn-link px-0 text-success">
+                                                <i class="fa fa-check-circle" title="View Active Licenses"/>
+                                                <span class="ml-1">
+                                                    <field name="active_license_count"/>
+                                                    Active
+                                                </span>
+                                            </button>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_partner_list_license" model="ir.ui.view">
+        <field name="name">res.partner.list.license</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <field name="phone" position="after">
+                <field name="dealer_id" optional="show"/>
+                <field name="dealer_code" optional="hide"/>
+                <field name="is_dealer" optional="hide"/>
+                <field name="license_count" optional="hide"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_partner_search_license" model="ir.ui.view">
+        <field name="name">res.partner.search.license</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <filter name="supplier" position="after">
+                <separator/>
+                <filter string="Dealers" name="dealers" domain="[('is_dealer', '=', True)]"/>
+                <filter string="Customers" name="customers" domain="[('is_dealer', '=', False)]"/>
+                <filter string="Has Active Licenses" name="has_active_licenses"
+                        domain="[('active_license_count', '>', 0)]"/>
+            </filter>
+        </field>
+    </record>
+</odoo>

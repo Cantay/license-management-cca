@@ -1,0 +1,382 @@
+{
+    "version": 21,
+    "sheets": [
+        {
+            "id": "sheet_dashboard",
+            "name": "Dashboard",
+            "colNumber": 8,
+            "rowNumber": 80,
+            "rows": {
+                "1": {
+                    "size": 30
+                },
+                "2": {
+                    "size": 26
+                },
+                "4": {
+                    "size": 22
+                },
+                "5": {
+                    "size": 22
+                },
+                "6": {
+                    "size": 22
+                },
+                "17": {
+                    "size": 26
+                },
+                "18": {
+                    "size": 24
+                },
+                "19": {
+                    "size": 24
+                },
+                "20": {
+                    "size": 24
+                },
+                "21": {
+                    "size": 24
+                },
+                "22": {
+                    "size": 24
+                },
+                "24": {
+                    "size": 22
+                }
+            },
+            "cols": {
+                "0": {
+                    "size": 36
+                },
+                "1": {
+                    "size": 220
+                },
+                "2": {
+                    "size": 180
+                },
+                "3": {
+                    "size": 160
+                }
+            },
+            "merges": [],
+            "cells": {
+                "A2": {
+                    "content": "[Helpdesk Performance]",
+                    "style": 1
+                },
+                "A3": {
+                    "content": "=_t(\"Support KPIs overview\")",
+                    "style": 5
+                },
+                "A5": {
+                    "content": "=_t(\"Filters\")",
+                    "style": 8
+                },
+                "A6": {
+                    "content": "=_t(\"Team ID\")",
+                    "style": 9
+                },
+                "B6": {
+                    "content": ""
+                },
+                "A7": {
+                    "content": "=_t(\"Include closed tickets? (TRUE/FALSE)\")",
+                    "style": 9
+                },
+                "B7": {
+                    "content": "FALSE",
+                    "style": 10
+                },
+                "A17": {
+                    "content": "=_t(\"Top Customers by Open Tickets\")",
+                    "style": 8
+                },
+                "A18": {
+                    "content": "=_t(\"Rank\")",
+                    "style": 2
+                },
+                "B18": {
+                    "content": "=_t(\"Customer\")",
+                    "style": 2
+                },
+                "C18": {
+                    "content": "=_t(\"Open Tickets\")",
+                    "style": 2
+                },
+                "A19": {
+                    "content": "=IF(B19=\"\",\"\",ROW()-18)",
+                    "style": 3
+                },
+                "B19": {
+                    "content": "=IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_NAME(ROW()-18,$B$6,$B$7,$B$8,$B$9),\"\")",
+                    "style": 4
+                },
+                "C19": {
+                    "content": "=IF(B19=\"\",\"\",IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_COUNT(ROW()-18,$B$6,$B$7,$B$8,$B$9),0))",
+                    "style": 4
+                },
+                "A20": {
+                    "content": "=IF(B20=\"\",\"\",ROW()-18)",
+                    "style": 3
+                },
+                "B20": {
+                    "content": "=IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_NAME(ROW()-18,$B$6,$B$7,$B$8,$B$9),\"\")",
+                    "style": 4
+                },
+                "C20": {
+                    "content": "=IF(B20=\"\",\"\",IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_COUNT(ROW()-18,$B$6,$B$7,$B$8,$B$9),0))",
+                    "style": 4
+                },
+                "A21": {
+                    "content": "=IF(B21=\"\",\"\",ROW()-18)",
+                    "style": 3
+                },
+                "B21": {
+                    "content": "=IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_NAME(ROW()-18,$B$6,$B$7,$B$8,$B$9),\"\")",
+                    "style": 4
+                },
+                "C21": {
+                    "content": "=IF(B21=\"\",\"\",IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_COUNT(ROW()-18,$B$6,$B$7,$B$8,$B$9),0))",
+                    "style": 4
+                },
+                "A22": {
+                    "content": "=IF(B22=\"\",\"\",ROW()-18)",
+                    "style": 3
+                },
+                "B22": {
+                    "content": "=IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_NAME(ROW()-18,$B$6,$B$7,$B$8,$B$9),\"\")",
+                    "style": 4
+                },
+                "C22": {
+                    "content": "=IF(B22=\"\",\"\",IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_COUNT(ROW()-18,$B$6,$B$7,$B$8,$B$9),0))",
+                    "style": 4
+                },
+                "A23": {
+                    "content": "=IF(B23=\"\",\"\",ROW()-18)",
+                    "style": 3
+                },
+                "B23": {
+                    "content": "=IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_NAME(ROW()-18,$B$6,$B$7,$B$8,$B$9),\"\")",
+                    "style": 4
+                },
+                "C23": {
+                    "content": "=IF(B23=\"\",\"\",IFERROR(ODOO.HELPDESK.TOP_CUSTOMER_COUNT(ROW()-18,$B$6,$B$7,$B$8,$B$9),0))",
+                    "style": 4
+                },
+                "A25": {
+                    "content": "=_t(\"TIP: Adjust filters and press Enter to refresh the metrics.\")",
+                    "style": 6
+                },
+                "A8": {
+                    "content": "=_t(\"Date From\")",
+                    "style": 8
+                },
+                "B8": {
+                    "content": "",
+                    "style": 9
+                },
+                "A9": {
+                    "content": "=_t(\"Date To\")",
+                    "style": 8
+                },
+                "B9": {
+                    "content": "",
+                    "style": 9
+                }
+            },
+            "styles": {},
+            "formats": {},
+            "borders": {
+                "A18:C18": 1,
+                "A19:C23": 2
+            },
+            "conditionalFormats": [
+                {
+                    "rule": {
+                        "type": "DataBarRule",
+                        "color": 13158600,
+                        "rangeValues": "C19:C23"
+                    },
+                    "id": "databar-top-customers",
+                    "ranges": [
+                        "C19:C23"
+                    ]
+                }
+            ],
+            "figures": [
+                {
+                    "id": "fig_helpdesk_total",
+                    "x": 0,
+                    "y": 90,
+                    "width": 220,
+                    "height": 120,
+                    "tag": "chart",
+                    "data": {
+                        "type": "scorecard",
+                        "background": "#0EA5E9",
+                        "title": {
+                            "text": "Total Tickets",
+                            "bold": true,
+                            "textColor": "#FFFFFF"
+                        },
+                        "keyValue": "Data!B1",
+                        "valueColor": "#FFFFFF"
+                    }
+                },
+                {
+                    "id": "fig_helpdesk_open",
+                    "x": 240,
+                    "y": 90,
+                    "width": 220,
+                    "height": 120,
+                    "tag": "chart",
+                    "data": {
+                        "type": "scorecard",
+                        "background": "#F97316",
+                        "title": {
+                            "text": "Open Tickets",
+                            "bold": true,
+                            "textColor": "#FFFFFF"
+                        },
+                        "keyValue": "Data!B2",
+                        "valueColor": "#FFFFFF"
+                    }
+                },
+                {
+                    "id": "fig_helpdesk_closed",
+                    "x": 480,
+                    "y": 90,
+                    "width": 220,
+                    "height": 120,
+                    "tag": "chart",
+                    "data": {
+                        "type": "scorecard",
+                        "background": "#22C55E",
+                        "title": {
+                            "text": "Closed Tickets",
+                            "bold": true,
+                            "textColor": "#FFFFFF"
+                        },
+                        "keyValue": "Data!B3",
+                        "valueColor": "#FFFFFF"
+                    }
+                },
+                {
+                    "id": "fig_helpdesk_avg",
+                    "x": 720,
+                    "y": 90,
+                    "width": 220,
+                    "height": 120,
+                    "tag": "chart",
+                    "data": {
+                        "type": "scorecard",
+                        "background": "#8B5CF6",
+                        "title": {
+                            "text": "Avg Close Days",
+                            "bold": true,
+                            "textColor": "#FFFFFF"
+                        },
+                        "keyValue": "Data!B4",
+                        "valueColor": "#FFFFFF"
+                    }
+                }
+            ],
+            "tables": [],
+            "areGridLinesVisible": true,
+            "isVisible": true
+        },
+        {
+            "id": "sheet_data",
+            "name": "Data",
+            "cells": {
+                "A1": {
+                    "content": "Total Tickets"
+                },
+                "B1": {
+                    "content": "=ODOO.HELPDESK.COUNT(Dashboard!B6,\"\",\"\",\"\",Dashboard!B8,Dashboard!B9)"
+                },
+                "A2": {
+                    "content": "Open Tickets"
+                },
+                "B2": {
+                    "content": "=ODOO.HELPDESK.OPEN(Dashboard!B6,Dashboard!B8,Dashboard!B9)"
+                },
+                "A3": {
+                    "content": "Closed Tickets"
+                },
+                "B3": {
+                    "content": "=ODOO.HELPDESK.CLOSED(Dashboard!B6,Dashboard!B8,Dashboard!B9)"
+                },
+                "A4": {
+                    "content": "Avg Close Days"
+                },
+                "B4": {
+                    "content": "=ODOO.HELPDESK.AVG.CLOSE(Dashboard!B6,Dashboard!B8,Dashboard!B9)"
+                }
+            },
+            "isVisible": false
+        }
+    ],
+    "styles": {
+        "1": {
+            "textColor": "#1E293B",
+            "bold": true,
+            "fontSize": 20
+        },
+        "2": {
+            "textColor": "#0F172A",
+            "bold": true,
+            "fontSize": 12,
+            "fillColor": "#E2E8F0"
+        },
+        "3": {
+            "textColor": "#64748B",
+            "fontSize": 11
+        },
+        "4": {
+            "textColor": "#111827",
+            "bold": true,
+            "fontSize": 12
+        },
+        "5": {
+            "textColor": "#94A3B8",
+            "italic": true
+        },
+        "6": {
+            "textColor": "#94A3B8",
+            "italic": true,
+            "fontSize": 10
+        },
+        "7": {
+            "textColor": "#0F172A",
+            "bold": true,
+            "fontSize": 13
+        },
+        "8": {
+            "textColor": "#475569",
+            "fontSize": 11
+        },
+        "9": {
+            "textColor": "#0F172A",
+            "fontSize": 11
+        },
+        "10": {
+            "textColor": "#0F172A",
+            "bold": true
+        }
+    },
+    "formats": {},
+    "borders": {
+        "1": {
+            "bottom": {
+                "style": "thin",
+                "color": "#CBD5F5"
+            }
+        }
+    },
+    "pivots": {},
+    "pivotNextId": 1,
+    "lists": {},
+    "listNextId": 1,
+    "revisionId": "START_REVISION"
+}

@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Toplu Arşivleme Eylemi -->
+    <record id="action_license_subscription_bulk_archive" model="ir.actions.server">
+        <field name="name">Archive Licenses</field>
+        <field name="model_id" ref="model_license_subscription"/>
+        <field name="state">code</field>
+        <field name="code">
+action = records.action_bulk_archive()
+        </field>
+        <field name="binding_model_id" ref="model_license_subscription"/>
+    </record>
+
+    <!-- Toplu Arşivden Çıkarma Eylemi -->
+    <record id="action_license_subscription_bulk_unarchive" model="ir.actions.server">
+        <field name="name">Unarchive Licenses</field>
+        <field name="model_id" ref="model_license_subscription"/>
+        <field name="state">code</field>
+        <field name="code">
+action = records.action_bulk_unarchive()
+        </field>
+        <field name="binding_model_id" ref="model_license_subscription"/>
+    </record>
+
+    <!-- Toplu Aktifleştirme Eylemi -->
+    <record id="action_license_subscription_bulk_set_active" model="ir.actions.server">
+        <field name="name">Set Licenses to Active</field>
+        <field name="model_id" ref="model_license_subscription"/>
+        <field name="state">code</field>
+        <field name="code">
+action = records.action_bulk_set_active()
+        </field>
+        <field name="binding_model_id" ref="model_license_subscription"/>
+    </record>
+
+    <!-- List View -->
+    <record id="view_license_subscription_list" model="ir.ui.view">
+        <field name="name">license.subscription.list</field>
+        <field name="model">license.subscription</field>
+        <field name="arch" type="xml">
+            <list string="Licenses" decoration-danger="state in ['expired', 'urgent']"
+                  decoration-warning="state == 'expiring'"
+                  decoration-success="state == 'active'"
+                  multi_edit="1">
+                <field name="category_id" widget="many2many_tags" string="Kontak Etiket"/>
+                <field name="license_no"/>
+                <field name="license_key" optional="hide"/>
+                <field name="customer_id"/>
+                <field name="signboard_name" string="Tabela Adı"/>
+                <field name="dealer_id"/>
+                <field name="product_type_selector" optional="show"/>
+                <field name="product_category_id" optional="show"/>
+                <field name="product_id"/>
+                <field name="program_code"/>
+                <field name="start_date"/>
+                <field name="end_date" optional="hide"/>
+                <field name="activity_ids" optional="show" widget="list_activity"/>
+                <field name="activity_user_id" optional="show" string="Activity by" widget="many2one_avatar_user"/>
+                <field name="my_activity_date_deadline" optional="show" string="My Deadline" widget="remaining_days" options="{'allow_order': '1'}"/>
+                <field name="days_to_expire"/>
+                <field name="expiration_progress" widget="progressbar" string="Kalan Süre"/>
+                <field name="state" widget="badge"
+                       decoration-danger="state == 'expired'"
+                       decoration-warning="state == 'expiring'"
+                       decoration-success="state == 'active'"
+                       decoration-info="state == 'draft'"/>
+                <field name="auto_renew"/>
+                <field name="amount" sum="Total Amount"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_license_subscription_form" model="ir.ui.view">
+        <field name="name">license.subscription.form</field>
+        <field name="model">license.subscription</field>
+        <field name="arch" type="xml">
+            <form string="License">
+                <header>
+                    <button name="action_activate" type="object" string="Activate" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button name="action_set_active" type="object" string="Set to Active" class="btn-primary"
+                            invisible="state != 'cancelled'"/>
+                    <button name="action_renew" type="object" string="Renew" class="btn-primary"
+                            invisible="state not in ['expiring', 'expired']"/>
+                    <button name="action_create_subscription" type="object" string="Create Subscription"
+                            invisible="subscription_id != False" class="oe_highlight"/>
+                    <button name="duplicate_license" string="Duplicate for New Product" type="object"
+                            invisible="not product_id"
+                            help="Create a new license for the same customer, but with different product/term."/>
+                    <button name="action_archive" type="object" string="Archive"
+                            invisible="state != 'cancelled' or is_archived"/>
+                    <button name="action_unarchive" type="object" string="Unarchive" invisible="not is_archived"/>
+                    <button name="action_cancel" type="object" string="Cancel"
+                            invisible="state == 'cancelled'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,active,expiring,urgent,expired"/>
+                </header>
+                <!-- view_license_subscription_form içindeki <sheet> etiketinin içeriğini değiştirin -->
+                <sheet>
+                    <widget name="web_ribbon" title="Süresi Doldu" invisible="state != 'expired'" bg_color="bg-danger"/>
+                    <widget name="web_ribbon" title="Yakında Bitecek" invisible="state != 'expiring'"
+                            bg_color="bg-info"/>
+                    <widget name="web_ribbon" title="Arşivlendi" invisible="not is_archived" bg_color="bg-secondary"/>
+                    <widget name="web_ribbon" title="Acil" invisible="state != 'urgent'" bg_color="bg-warning"/>
+                    <div class="oe_title">
+                        <label for="license_no" string="License Number"/>
+                        <h1>
+                            <field name="license_no"/>
+                        </h1>
+                    </div>
+
+                    <notebook>
+                        <page string="Genel Bilgiler" name="general_info">
+                            <group>
+                                <group string="Müşteri ve Bayi Bilgileri">
+                                    <field name="dealer_id"/>
+                                    <field name="customer_id"
+                                           context="{'search_default_customer':0, 'show_address': 1, 'default_is_company': False}"/>
+                                    <field name="signboard_name"/>
+                                    <field name="contact_person_id"
+                                           invisible="not customer_id or not customer_id.is_company"
+                                           options="{'no_create_edit': True}"
+                                           context="{'default_parent_id': customer_id, 'default_type': 'contact'}"
+                                           domain="[('parent_id', '=', customer_id)]"/>
+                                    <field name="phone"/>
+                                    <field name="mobile"/>
+                                    <field name="category_id" widget="many2many_tags" readonly="0"/>
+                                </group>
+                                <group string="Ürün ve Süre Bilgileri">
+                                    <field name="product_type_selector"/>
+                                    <field name="product_id" context="{'default_type': product_type_selector}"
+                                           domain="[('product_tmpl_id.type', '=', product_type_selector)]"/>
+                                    <field name="license_term_id" options="{'no_create': True}"/>
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
+                                    <field name="days_to_expire" readonly="1"/>
+                                    <field name="free_support_term_id"/>
+                                    <field name="free_support_end_date" invisible="not free_support_term_id"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Finansal &amp; Entegrasyon" name="financial_integration">
+                            <group>
+                                <group string="Fiyatlandırma">
+                                    <field name="pricelist_id" options="{'no_create': True}"/>
+                                    <field name="use_manual_price"/>
+                                    <field name="manual_amount" invisible="not bool(use_manual_price)"
+                                           required="not use_manual_price"/>
+                                    <field name="amount"/>
+                                    <field name="currency_id" invisible="1"/>
+                                </group>
+                                <group string="Ayarlar ve Entegrasyon">
+                                    <field name="auto_renew"/>
+                                    <field name="is_archived"/>
+                                    <field name="sale_order_id" readonly="1"/>
+                                    <field name="subscription_id" readonly="1"/>
+
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Teknik Detaylar" name="technical_details">
+                            <group>
+                                <group string="Program Detayları" invisible="product_type_selector != 'software'">
+                                    <field name="program_code" readonly="1"/>
+                                    <field name="reference_code" readonly="1"/>
+                                    <field name="license_key" placeholder="e.g., A1B2C-D3E4F-G5H6I"/>
+                                </group>
+                                <group string="Hizmet Detayları">
+                                    <!-- Bu alanlar artık daha anlamlı bir grup altında -->
+                                    <field name="detail_title" string="Domain URL" placeholder="example.com"
+                                           invisible="product_type_selector != 'domain_tracking'"
+                                           required="product_type_selector == 'domain_tracking'"/>
+                                    <field name="detail_title" string="Server IP/Hostname"
+                                           placeholder="192.168.1.1 or server.example.com"
+                                           invisible="product_type_selector != 'server_service'"/>
+                                    <field name="detail_title" string="Support Title"
+                                           placeholder="Support package description"
+                                           invisible="product_type_selector != 'support_package'"/>
+                                    <field name="detail_title" string="Program Name"
+                                           placeholder="Software program details"
+                                           invisible="product_type_selector != 'software'"
+                                           readonly="product_type_selector == 'software'"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Geçmiş &amp; Notlar" name="history_notes">
+                            <group string="Lisans Geçmişi">
+                                <field name="history_ids" readonly="1" nolabel="1">
+                                    <list>
+                                        <field name="date"/>
+                                        <field name="action"/>
+                                        <field name="user_id"/>
+                                        <field name="notes"/>
+                                    </list>
+                                </field>
+                            </group>
+                            <group string="Notlar">
+                                <field name="notes" nolabel="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- License Subscription Kanban View -->
+    <record id="view_license_subscription_kanban" model="ir.ui.view">
+            <field name="name">license.subscription.kanban</field>
+            <field name="model">license.subscription</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile" default_group_by="state">
+                    <!-- Required fields for kanban functionality -->
+                    <field name="id"/>
+                    <field name="license_no"/>
+                    <field name="customer_id"/>
+                    <field name="dealer_id"/>
+                    <field name="product_id"/>
+                    <field name="program_code"/>
+                    <field name="reference_code"/>
+                    <field name="product_type_selector"/>
+                    <field name="state"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="create_date"/>
+                    <field name="days_to_expire"/>
+                    <field name="amount"/>
+                    <field name="currency_id"/>
+                    <field name="auto_renew"/>
+                    <field name="license_key"/>
+                    <field name="expiration_progress"/>
+                    <field name="category_id"/>
+                    <field name="signboard_name"/>
+                    <field name="activity_ids"/>
+                    <field name="activity_state"/>
+                    <field name="color"/>
+
+                    <!-- Progress bar for activity states -->
+                    <progressbar field="activity_state"
+                                colors='{"planned": "success", "today": "warning", "overdue": "danger"}'/>
+
+                    <templates>
+                        <!-- Menu options -->
+                        <t t-name="menu">
+                            <a role="menuitem" type="open" class="dropdown-item">
+                                <i class="fa fa-pencil"/> Edit License
+                            </a>
+                            <a role="menuitem" type="object" name="action_renew" class="dropdown-item">
+                                <i class="fa fa-refresh"/> Renew License
+                            </a>
+                            <a role="menuitem" type="object" name="duplicate_license" class="dropdown-item">
+                                <i class="fa fa-copy"/> Duplicate License
+                            </a>
+                            <t t-if="widget.deletable">
+                                <div class="dropdown-divider"/>
+                                <a role="menuitem" type="delete" class="dropdown-item text-danger">
+                                    <i class="fa fa-trash"/> Delete
+                                </a>
+                            </t>
+                            <!-- Color picker for visual organization -->
+                            <div class="dropdown-divider"/>
+                            <field name="color" widget="kanban_color_picker"/>
+                        </t>
+
+                        <!-- Main card content -->
+                        <t t-name="card" class="my-2">
+                            <!-- Header with license number and status -->
+                            <div class="o_kanban_card_header">
+                                <div class="o_kanban_card_header_title">
+                                    <div class="o_primary fw-bold fs-5">
+                                        <field name="license_no"/>
+                                    </div>
+                                    <!-- Program code as prominent tag -->
+                                    <t t-if="record.program_code.value">
+                                        <span class="badge bg-primary text-white ms-2">
+                                            <field name="program_code"/>
+                                        </span>
+                                    </t>
+                                    <!-- Product type indicator -->
+                                    <t t-if="record.product_type_selector.value">
+                                        <span class="badge bg-secondary ms-1"
+                                              t-att-title="record.product_type_selector.value">
+                                            <t t-if="record.product_type_selector.raw_value == 'software'">
+                                                <i class="fa fa-desktop"/> SW
+                                            </t>
+                                            <t t-elif="record.product_type_selector.raw_value == 'support_package'">
+                                                <i class="fa fa-life-ring"/> SUP
+                                            </t>
+                                            <t t-elif="record.product_type_selector.raw_value == 'server_service'">
+                                                <i class="fa fa-server"/> SRV
+                                            </t>
+                                            <t t-elif="record.product_type_selector.raw_value == 'domain_tracking'">
+                                                <i class="fa fa-globe"/> DOM
+                                            </t>
+                                            <t t-else="">
+                                                <i class="fa fa-cube"/> SVC
+                                            </t>
+                                        </span>
+                                    </t>
+                                    <!-- Auto renew indicator -->
+                                    <t t-if="record.auto_renew.raw_value">
+                                        <span class="badge bg-success ms-1" title="Auto Renewal Enabled">
+                                            <i class="fa fa-refresh"/>
+                                        </span>
+                                    </t>
+                                </div>
+                            </div>
+
+                            <!-- Customer and dealer info -->
+                            <div class="o_kanban_record_body">
+                                <!-- Customer name (prominent) -->
+                                <div class="o_kanban_record_title">
+                                    <strong>
+                                        <field name="customer_id"/>
+                                    </strong>
+                                </div>
+
+                                <!-- Signboard name if different from customer -->
+                                <t t-if="record.signboard_name.value and record.signboard_name.value != record.customer_id.value">
+                                    <div class="text-muted small">
+                                        <i class="fa fa-building-o"/> <field name="signboard_name"/>
+                                    </div>
+                                </t>
+
+                                <!-- Dealer info -->
+                                <div class="text-muted small mt-1">
+                                    <i class="fa fa-handshake-o"/> <field name="dealer_id"/>
+                                </div>
+
+                                <!-- Product info -->
+                                <div class="mt-2">
+                                    <div class="text-primary">
+                                        <i class="fa fa-cube"/> <field name="product_id"/>
+                                    </div>
+                                    <t t-if="record.reference_code.value">
+                                        <div class="text-muted small">
+                                            Ref: <field name="reference_code"/>
+                                        </div>
+                                    </t>
+                                </div>
+
+                                <!-- Customer categories as tags -->
+                                <t t-if="record.category_id.raw_value and record.category_id.raw_value.length > 0">
+                                    <div class="mt-2">
+                                        <field name="category_id" widget="many2many_tags"
+                                               options="{'color_field': 'color'}"/>
+                                    </div>
+                                </t>
+                            </div>
+
+                            <!-- Date and progress information -->
+                            <div class="o_kanban_record_content mt-3">
+                                <!-- Creation date and license period -->
+                                <div class="row">
+                                    <div class="col-12">
+                                        <small class="text-muted">
+                                            <i class="fa fa-calendar-plus-o"/> Created:
+                                            <field name="create_date" widget="date"/>
+                                        </small>
+                                    </div>
+                                    <div class="col-12 mt-1">
+                                        <small class="text-muted">
+                                            <i class="fa fa-calendar"/> Period:
+                                            <field name="start_date" widget="date"/> -
+                                            <field name="end_date" widget="date"/>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <!-- Days to expire -->
+                                <t t-if="record.days_to_expire.value and record.days_to_expire.raw_value >= 0">
+                                    <div class="mt-2">
+                                        <small class="badge bg-info">
+                                            <field name="days_to_expire"/> days remaining
+                                        </small>
+                                    </div>
+                                </t>
+
+                                <!-- License amount -->
+                                <div class="d-flex justify-content-between align-items-center mt-2">
+                                    <small class="text-muted">
+                                        <i class="fa fa-money"/>
+                                        <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                    </small>
+                                    <!-- License key indicator -->
+                                    <t t-if="record.license_key.value">
+                                        <small class="text-success" title="License key available">
+                                            <i class="fa fa-key"/>
+                                        </small>
+                                    </t>
+                                </div>
+                            </div>
+
+                            <!-- Footer with activities and state -->
+                            <footer class="pt-2 mt-3 border-top">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <!-- Activity widget -->
+                                    <div class="d-flex align-items-center">
+                                        <field name="activity_ids" widget="kanban_activity"/>
+                                    </div>
+
+                                    <!-- State badge -->
+                                    <div class="d-flex align-items-center">
+                                        <field name="state" widget="badge"
+                                               decoration-danger="state == 'expired'"
+                                               decoration-warning="state in ['expiring', 'urgent']"
+                                               decoration-success="state == 'active'"
+                                               decoration-info="state == 'draft'"
+                                               decoration-muted="state == 'cancelled'"
+                                               class="me-2"/>
+                                    </div>
+                                </div>
+                            </footer>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+    <!-- Search View -->
+    <record id="view_license_subscription_search" model="ir.ui.view">
+        <field name="name">license.subscription.search</field>
+        <field name="model">license.subscription</field>
+        <field name="arch" type="xml">
+            <search string="Search Licenses">
+                <field name="license_no"/>
+                <field name="customer_id"/>
+                <field name="dealer_id"/>
+                <field name="product_id"/>
+                <field name="program_code"/>
+                <separator/>
+                <filter string="Active" name="active"
+                        domain="[('state', '=', 'active')]"/>
+                <filter string="Expiring Soon" name="expiring"
+                        domain="[('state', '=', 'expiring')]"/>
+                <filter string="Expired" name="expired"
+                        domain="[('state', '=', 'expired')]"/>
+                <separator/>
+                <filter string="Auto Renew" name="auto_renew"
+                        domain="[('auto_renew', '=', True)]"/>
+                <separator/>
+                <filter string="Archived" name="archived"
+                        domain="[('is_archived', '=', True)]"/>
+                <filter string="Not Archived" name="not_archived"
+                        domain="[('is_archived', '=', False)]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Customer" name="group_customer"
+                            context="{'group_by': 'customer_id'}"/>
+                    <filter string="Dealer" name="group_dealer"
+                            context="{'group_by': 'dealer_id'}"/>
+                    <filter string="Product" name="group_product"
+                            context="{'group_by': 'product_id'}"/>
+                    <filter string="Ürün Türü" name="group_by_product_type"
+                            context="{'group_by': 'product_type_selector'}"/>
+                    <filter string="Program" name="group_program"
+                            context="{'group_by': 'program_id'}"/>
+                    <filter string="State" name="group_state"
+                            context="{'group_by': 'state'}"/>
+                    <filter string="End Date" name="group_end_date"
+                            context="{'group_by': 'end_date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Calendar View -->
+    <record id="view_license_subscription_calendar" model="ir.ui.view">
+        <field name="name">license.subscription.calendar</field>
+        <field name="model">license.subscription</field>
+        <field name="arch" type="xml">
+            <calendar string="License Calendar" date_start="end_date"
+                      color="state" mode="month">
+                <field name="license_no"/>
+                <field name="customer_id"/>
+                <field name="state"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Pivot View -->
+    <record id="view_license_subscription_pivot" model="ir.ui.view">
+        <field name="name">license.subscription.pivot</field>
+        <field name="model">license.subscription</field>
+        <field name="arch" type="xml">
+            <pivot string="License Analysis">
+                <field name="customer_id" type="row"/>
+                <field name="dealer_id" type="row"/>
+                <field name="state" type="col"/>
+                <field name="amount" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Graph View -->
+    <record id="view_license_subscription_graph" model="ir.ui.view">
+        <field name="name">license.subscription.graph</field>
+        <field name="model">license.subscription</field>
+        <field name="arch" type="xml">
+            <graph string="License Analysis" type="pie">
+                <field name="state"/>
+                <field name="amount" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_license_subscription" model="ir.actions.act_window">
+        <field name="name">License Subscriptions</field>
+        <field name="res_model">license.subscription</field>
+        <field name="view_mode">list,kanban,form,calendar,pivot,graph</field>
+        <field name="search_view_id" ref="view_license_subscription_search"/>
+        <field name="context">{'search_default_active': 1, 'search_default_not_archived': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first license!
+            </p>
+            <p>
+                Manage software licenses, track expiration dates, and handle renewals.
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- License Programs -->
+        <record id="license_program_cafeplus" model="license.program">
+            <field name="name">AKINSOFT CafePlus</field>
+            <field name="code">WCP</field>
+            <field name="sequence">10</field>
+        </record>
+    </data>
+</odoo>

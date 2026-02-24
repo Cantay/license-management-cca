@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Kontak Listesi Görünümünü Genişlet -->
+    <record id="view_partner_tree_inherit_helpdesk_license" model="ir.ui.view">
+        <field name="name">res.partner.tree.inherit.helpdesk.license</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <!-- Lisans sayısı sütunundan sonra ticket sayısı sütununu ekle -->
+            <xpath expr="//field[@name='license_count']" position="after">
+                <field name="helpdesk_ticket_count" string="Ticket Sayısı" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

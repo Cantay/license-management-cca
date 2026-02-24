@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Helpdesk tickets pivot view -->
+    <record id="view_helpdesk_license_ticket_pivot" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.license.pivot</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="arch" type="xml">
+            <pivot string="Helpdesk License Analysis">
+                <field name="create_date" type="col" interval="month"/>
+                <field name="stage_id" type="row"/>
+                <field name="team_id" type="row"/>
+                <field name="license_id" type="row"/>
+                <field name="dealer_id" type="row"/>
+                <field name="partner_id" type="row"/>
+                <field name="user_id" type="row"/>
+                <field name="priority" type="col"/>
+                <field name="total_hours" type="measure" string="Logged Hours"/>
+                <field name="planned_hours" type="measure" string="Planned Hours"/>
+                <field name="remaining_hours" type="measure" string="Remaining Hours"/>
+                <field name="id" type="measure" operator="count" string="Tickets"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Helpdesk tickets search view -->
+    <record id="view_helpdesk_license_ticket_search" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.license.search</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="arch" type="xml">
+            <search string="Helpdesk Tickets">
+                <field name="name" string="Subject"/>
+                <field name="partner_id" optional="show"/>
+                <field name="license_id" optional="show"/>
+                <field name="dealer_id" optional="show"/>
+                <filter string="Open" name="open" domain="[('closed', '=', False)]"/>
+                <filter string="Closed" name="closed" domain="[('closed', '=', True)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Stage" name="stage" context="{'group_by': 'stage_id'}"/>
+                    <filter string="Team" name="team" context="{'group_by': 'team_id'}"/>
+                    <filter string="Dealer" name="dealer" context="{'group_by': 'dealer_id'}"/>
+                    <filter string="License" name="license" context="{'group_by': 'license_id'}"/>
+                    <filter string="Assigned User" name="assignee" context="{'group_by': 'user_id'}"/>
+                    <filter string="Priority" name="priority" context="{'group_by': 'priority'}"/>
+                    <filter string="Month" name="create_month" context="{'group_by': 'create_date:month'}"/>
+                </group>
+                <searchpanel>
+                    <field name="stage_id"/>
+                    <field name="priority"/>
+                    <field name="team_id"/>
+                    <field name="user_id" select="multi" domain="[('share', '=', False)]"/>
+                    <field name="license_id"/>
+                    <field name="dealer_id"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <!-- Account analytic line pivot view for timesheets -->
+    <record id="view_helpdesk_license_timesheet_pivot" model="ir.ui.view">
+        <field name="name">account.analytic.line.helpdesk.timesheet.pivot</field>
+        <field name="model">account.analytic.line</field>
+        <field name="arch" type="xml">
+            <pivot string="Helpdesk Timesheet Analysis">
+                <field name="date" type="col" interval="month"/>
+                <field name="ticket_license_id" type="row"/>
+                <field name="ticket_dealer_id" type="row"/>
+                <field name="ticket_id" type="row"/>
+                <field name="employee_id" type="row"/>
+                <field name="project_id" type="row"/>
+                <field name="unit_amount" type="measure" string="Hours"/>
+                <field name="amount" type="measure" string="Amount"/>
+                <field name="id" type="measure" operator="count" string="Entries"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Timesheet search view -->
+    <record id="view_helpdesk_license_timesheet_search" model="ir.ui.view">
+        <field name="name">account.analytic.line.helpdesk.timesheet.search</field>
+        <field name="model">account.analytic.line</field>
+        <field name="arch" type="xml">
+            <search string="Helpdesk Timesheets">
+                <field name="name" string="Description"/>
+                <field name="ticket_id"/>
+                <field name="employee_id"/>
+                <field name="ticket_license_id" string="License"/>
+                <field name="ticket_dealer_id" string="Dealer"/>
+                <group expand="0" string="Group By">
+                    <filter string="Ticket" name="group_ticket" context="{'group_by': 'ticket_id'}"/>
+                    <filter string="License" name="group_license" context="{'group_by': 'ticket_license_id'}"/>
+                    <filter string="Dealer" name="group_dealer" context="{'group_by': 'ticket_dealer_id'}"/>
+                    <filter string="Employee" name="group_employee" context="{'group_by': 'employee_id'}"/>
+                    <filter string="Month" name="group_date" context="{'group_by': 'date:month'}"/>
+                </group>
+                <searchpanel>
+                    <field name="ticket_license_id"/>
+                    <field name="ticket_dealer_id"/>
+                    <field name="ticket_id"/>
+                    <field name="employee_id"/>
+                    <field name="project_id"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_helpdesk_license_ticket_pivot" model="ir.actions.act_window">
+        <field name="name">Helpdesk License Analysis</field>
+        <field name="res_model">helpdesk.ticket</field>
+        <field name="view_mode">pivot,graph,tree</field>
+        <field name="view_id" ref="view_helpdesk_license_ticket_pivot"/>
+        <field name="search_view_id" ref="view_helpdesk_license_ticket_search"/>
+        <field name="context">{'default_group_by':'license_id'}</field>
+        <field name="domain">[]</field>
+    </record>
+
+    <record id="action_helpdesk_license_timesheet_pivot" model="ir.actions.act_window">
+        <field name="name">Helpdesk Timesheet Analysis</field>
+        <field name="res_model">account.analytic.line</field>
+        <field name="view_mode">pivot,graph,tree</field>
+        <field name="view_id" ref="view_helpdesk_license_timesheet_pivot"/>
+        <field name="search_view_id" ref="view_helpdesk_license_timesheet_search"/>
+        <field name="domain">[('ticket_id', '!=', False)]</field>
+        <field name="context">{'default_group_by': 'ticket_id'}</field>
+    </record>
+
+    <!-- Menus under Reporting -->
+    <menuitem
+        id="menu_helpdesk_license_ticket_pivot"
+        name="Tickets by License"
+        parent="helpdesk_mgmt.helpdesk_ticket_reporting_menu"
+        action="action_helpdesk_license_ticket_pivot"
+        sequence="15"
+        groups="helpdesk_mgmt.group_helpdesk_manager"
+    />
+
+    <menuitem
+        id="menu_helpdesk_license_timesheet_pivot"
+        name="Ticket Timesheets"
+        parent="helpdesk_mgmt.helpdesk_ticket_reporting_menu"
+        action="action_helpdesk_license_timesheet_pivot"
+        sequence="20"
+        groups="helpdesk_mgmt.group_helpdesk_manager"
+    />
+
+</odoo>

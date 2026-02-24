@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Lisans Listesi Görünümünü Genişlet -->
+    <record id="view_license_subscription_list_inherit_helpdesk" model="ir.ui.view">
+        <field name="name">license.subscription.list.inherit.helpdesk</field>
+        <field name="model">license.subscription</field>
+        <field name="inherit_id" ref="license_management.view_license_subscription_list"/>
+        <field name="arch" type="xml">
+            <!-- Müşteri alanından sonra ticket sayısı sütununu ekle -->
+            <xpath expr="//field[@name='customer_id']" position="after">
+                <field name="customer_ticket_count" string="Ticket Sayısı" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,10 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_license_subscription_user,license.subscription.user,model_license_subscription,license_management.group_license_user,1,0,0,0
+access_license_subscription_manager,license.subscription.manager,model_license_subscription,license_management.group_license_manager,1,1,1,1
+access_license_program_user,license.program.user,model_license_program,license_management.group_license_user,1,0,0,0
+access_license_program_manager,license.program.manager,model_license_program,license_management.group_license_manager,1,1,1,1
+access_license_history_user,license.history.user,model_license_history,license_management.group_license_user,1,0,0,0
+access_license_history_manager,license.history.manager,model_license_history,license_management.group_license_manager,1,1,1,1
+access_license_renewal_wizard,license.renewal.wizard,model_license_renewal_wizard,license_management.group_license_user,1,1,1,1
+access_license_term_user,license.term.user,model_license_term,license_management.group_license_user,1,0,0,0
+access_license_term_manager,license.term.manager,model_license_term,license_management.group_license_manager,1,1,1,1

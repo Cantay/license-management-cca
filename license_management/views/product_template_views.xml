@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_view_license" model="ir.ui.view">
+        <field name="name">product.template.form.license</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='sales']" position="inside">
+                <group string="License Information" name="license_info">
+                    <field name="is_license_product"/>
+                    <field name="license_program_id" invisible="not is_license_product"/>
+                    <field name="program_code" invisible="not is_license_product"/>
+                    <field name="reference_code" invisible="not is_license_product"/>
+                    <field name="license_type" invisible="not is_license_product"/>
+                    <field name="allowed_term_ids" widget="many2many_tags"
+                   invisible="not is_license_product"/>
+                    <field name="has_maintenance_agreement" invisible="not is_license_product"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_search_view_license" model="ir.ui.view">
+        <field name="name">product.template.search.license</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <filter name="filter_to_sell" position="after">
+                <separator/>
+                <filter string="License Products" name="license_products"
+                        domain="[('is_license_product', '=', True)]"/>
+            </filter>
+        </field>
+    </record>
+</odoo>

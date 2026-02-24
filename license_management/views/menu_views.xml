@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Menu -->
+    <menuitem id="menu_license_root"
+              name="License Management"
+              sequence="45"
+              groups="license_management.group_license_user"
+              web_icon="license_management,static/description/icon.png"/>
+
+    <!-- License Management -->
+    <record id="action_license_subscription" model="ir.actions.act_window">
+        <field name="name">License Subscriptions</field>
+        <field name="res_model">license.subscription</field>
+        <field name="view_mode">list,kanban,form,calendar,pivot,graph</field>
+        <field name="search_view_id" ref="view_license_subscription_search"/>
+        <field name="context">{'search_default_active': 1, 'search_default_not_archived': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first license!
+            </p>
+            <p>
+                Manage software licenses, track expiration dates, and handle renewals.
+            </p>
+        </field>
+    </record>
+
+<!--    <record id="action_license_dashboard" model="ir.actions.client">-->
+<!--        <field name="name">License Dashboard</field>-->
+<!--        <field name="tag">license_dashboard</field>-->
+<!--    </record>-->
+
+    <menuitem id="menu_license_subscription"
+              name="Licenses"
+              parent="menu_license_root"
+              action="action_license_subscription"
+              sequence="10"/>
+
+<!--    <menuitem id="menu_license_dashboard"-->
+<!--              name="Dashboard"-->
+<!--              parent="menu_license_root"-->
+<!--              action="action_license_dashboard"-->
+<!--              sequence="5"/>-->
+
+    <!-- Configuration -->
+    <menuitem id="menu_license_configuration"
+              name="Configuration"
+              parent="menu_license_root"
+              sequence="90"
+              groups="license_management.group_license_manager"/>
+
+    <!-- License Terms -->
+    <record id="action_license_term" model="ir.actions.act_window">
+        <field name="name">License Terms</field>
+        <field name="res_model">license.term</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_license_term"
+              name="License Terms"
+              parent="menu_license_configuration"
+              action="action_license_term"
+              sequence="20"/>
+
+    <!-- License Programs-->
+    <record id="action_license_program" model="ir.actions.act_window">
+        <field name="name">License Programs</field>
+        <field name="res_model">license.program</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_license_program_search"/>
+        <field name="context">{'search_default_active': 1}</field>
+    </record>
+    <menuitem id="menu_license_products"
+          name="License Products"
+          parent="menu_license_configuration"
+          action="product.product_template_action"
+          sequence="10"/>
+
+    <menuitem id="menu_license_program"
+              name="License Programs"
+              parent="menu_license_configuration"
+              action="action_license_program"
+              sequence="20"/>
+
+    <!-- Dealers Menu -->
+    <record id="action_dealer_partners" model="ir.actions.act_window">
+        <field name="name">Dealers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="domain">[('is_dealer', '=', True)]</field>
+        <field name="context">{
+            'default_is_dealer': True,
+            'search_default_dealers': 1,
+            'default_company_type': 'company'
+            }
+        </field>
+    </record>
+
+    <menuitem id="menu_dealer_list"
+          name="Dealer List"
+          parent="menu_license_root"
+          action="action_dealer_partners"
+          sequence="20"/>
+
+    <!-- Customers Menu -->
+    <record id="action_customer_partners" model="ir.actions.act_window">
+            <field name="name">Customers</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">list,form</field>
+            <field name="domain">[('dealer_id', '!=', False)]</field>
+            <field name="context">{}</field>
+        </record>
+
+    <menuitem id="menu_customer_list"
+          name="Customers"
+          parent="menu_license_root"
+          action="action_customer_partners"
+          sequence="30"/>
+
+    <!-- Reports Menu -->
+    <menuitem id="menu_license_reports"
+          name="Reports"
+          parent="menu_license_root"
+          sequence="80"/>
+
+    <record id="action_license_analysis" model="ir.actions.act_window">
+        <field name="name">License Analysis</field>
+        <field name="res_model">license.subscription</field>
+        <field name="view_mode">pivot,graph,list</field>
+        <field name="context">{
+            'search_default_active': 1,
+            'group_by': ['dealer_id', 'program_id']
+        }</field>
+    </record>
+
+    <menuitem id="menu_license_analysis"
+              name="License Analysis"
+              parent="menu_license_reports"
+              action="action_license_analysis"
+              sequence="10"/>
+
+</odoo>

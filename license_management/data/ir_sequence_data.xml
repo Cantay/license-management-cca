@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_license_subscription" model="ir.sequence">
+            <field name="name">License Subscription</field>
+            <field name="code">license.subscription</field>
+            <field name="prefix">LIC/%(year)s/</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_dealer_code" model="ir.sequence">
+            <field name="name">Dealer Code</field>
+            <field name="code">dealer.code</field>
+            <field name="prefix">DLR</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

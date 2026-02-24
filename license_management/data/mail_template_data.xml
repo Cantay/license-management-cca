@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mail_template_license_expiring" model="mail.template">
+        <field name="name">License Expiring Notification</field>
+        <field name="model_id" ref="model_license_subscription"/>
+        <field name="subject">License {{ object.license_no }} is expiring soon</field>
+        <field name="email_from">{{ user.email }}</field>
+        <!-- Müşterinin e-postası varsa gönder, yoksa boş bırak -->
+        <field name="email_to">{{ object.customer_id.email if object.customer_id else '' }}</field>
+        <!-- Bayinin e-postası varsa CC'ye ekle, yoksa boş bırak -->
+        <field name="email_cc">{{ object.dealer_id.email if object.dealer_id else '' }}</field>
+        <field name="body_html" type="html">
+            <p>Dear {{ object.customer_id.name if object.customer_id else 'Customer' }},</p>
+            <p>Your license <strong>{{ object.license_no }}</strong> for {{ object.product_id.name }}
+            will expire on <strong>{{ object.end_date }}</strong> ({{ object.days_to_expire }} days remaining).</p>
+            <p>Please contact us to renew your license.</p>
+            <p>Best regards,<br/>{{ user.company_id.name }}</p>
+        </field>
+    </record>
+</odoo>
