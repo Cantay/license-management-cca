@@ -23,6 +23,11 @@ class LicenseRenewalWizard(models.TransientModel):
         string='License Term',
         help="Select the term that defines the renewal duration.",
     )
+    renewal_start_type = fields.Selection([
+        ('next_day', 'Eski Bitişin Ertesi Günü'),
+        ('today', 'Bugün İtibariyle'),
+        ('custom', 'Özel Bir Tarih Seç')
+    ], string='Başlama Seçeneği', default='next_day', required=True)
     start_date = fields.Date(string='New Start Date', required=True)
     duration = fields.Integer(string='Duration (Days)', required=True)
     end_date = fields.Date(string='New End Date', compute='_compute_end_date',
@@ -63,6 +68,20 @@ class LicenseRenewalWizard(models.TransientModel):
                 wizard.end_date = wizard.start_date + timedelta(days=wizard.duration)
             else:
                 wizard.end_date = False
+
+    @api.onchange('renewal_start_type')
+    def _onchange_renewal_start_type(self):
+        for wizard in self:
+            if wizard.renewal_start_type == 'next_day':
+                if wizard.license_id and wizard.license_id.end_date:
+                    wizard.start_date = wizard.license_id.end_date + timedelta(days=1)
+                else:
+                    wizard.start_date = fields.Date.today()
+            elif wizard.renewal_start_type == 'today':
+                wizard.start_date = fields.Date.today()
+            
+            # Recalculate end_date logic
+            wizard._onchange_license_term_id()
 
     @api.onchange('license_term_id', 'start_date')
     def _onchange_license_term_id(self):

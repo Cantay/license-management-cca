@@ -13,6 +13,16 @@ class ResPartner(models.Model):
         "signboard_name",
     ]
 
+    # WORKAROUND for missing field error in inherited views
+    duplicate_bank_partner_ids = fields.Many2many(
+        'res.partner', 
+        relation='dummy_bank_partner_rel_license',
+        column1='partner_id',
+        column2='dummy_partner_id',
+        string='Duplicate Bank Partners (Dummy)'
+    )
+    available_peppol_eas = fields.Char(string='Available Peppol EAS (Dummy)')
+
     # Dealer specific fields
     is_dealer = fields.Boolean(string='Is Dealer', default=False)
     dealer_code = fields.Char(string='Dealer Code', copy=False, index=True, tracking=True)

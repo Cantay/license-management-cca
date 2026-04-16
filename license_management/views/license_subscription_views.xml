@@ -82,7 +82,7 @@ action = records.action_bulk_set_active()
                     <button name="action_set_active" type="object" string="Set to Active" class="btn-primary"
                             invisible="state != 'cancelled'"/>
                     <button name="action_renew" type="object" string="Renew" class="btn-primary"
-                            invisible="state not in ['expiring', 'expired']"/>
+                            invisible="state not in ['active', 'expiring', 'urgent', 'expired']"/>
                     <button name="action_create_subscription" type="object" string="Create Subscription"
                             invisible="subscription_id != False" class="oe_highlight"/>
                     <button name="duplicate_license" string="Duplicate for New Product" type="object"

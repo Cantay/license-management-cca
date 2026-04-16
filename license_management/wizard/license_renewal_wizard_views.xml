@@ -11,7 +11,8 @@
                     <field name="dealer_id"/>
                     <field name="product_id" domain="[('is_license_product', '=', True)]"/>
                     <field name="license_term_id" options="{'no_create_edit': True}"/>
-                    <field name="start_date"/>
+                    <field name="renewal_start_type" widget="radio"/>
+                    <field name="start_date" readonly="renewal_start_type != 'custom'"/>
                     <field name="duration"/>
                     <field name="end_date"/>
                     <field name="amount"/>
